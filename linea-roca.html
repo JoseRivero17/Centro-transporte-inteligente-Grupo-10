@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Línea Roca — GeoTransporte</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- ENCABEZADO DEL SITIO -->
+    <header>
+        <div class="contenedor-header">
+            <div class="logo-sitio">
+                <span class="icono-tren">🚆</span>
+                <div>
+                    <p class="nombre-centro">GeoTransporte</p>
+                    <h1 class="nombre-linea">Línea Roca</h1>
+                </div>
+            </div>
+            <nav aria-label="Navegación principal">
+                <ul>
+                    <li><a href="#info">Información</a></li>
+                    <li><a href="#paradas">Paradas</a></li>
+                    <li><a href="#horarios">Horarios</a></li>
+                    <li><a href="#accesibilidad">Accesibilidad</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- SECCIÓN PRINCIPAL / HERO -->
+    <section class="hero">
+        <div class="contenedor">
+            <h2>Servicio de Tren Regional</h2>
+            <p>Conectando el sur del Gran Buenos Aires con la Ciudad de La Plata</p>
+            <div class="datos-rapidos">
+                <div class="dato">
+                    <strong>Recorrido principal</strong>
+                    <span>Constitución → La Plata</span>
+                </div>
+                <div class="dato">
+                    <strong>Distancia</strong>
+                    <span>52,6 km</span>
+                </div>
+                <div class="dato">
+                    <strong>Duración</strong>
+                    <span>~1h 10min</span>
+                </div>
+                <div class="dato">
+                    <strong>Operadora</strong>
+                    <span>Trenes Argentinos</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: INFORMACIÓN DEL SERVICIO -->
+    <section id="info" class="seccion">
+        <div class="contenedor">
+            <h2>Información del servicio</h2>
+
+            <div class="info-grid">
+                <div class="info-bloque">
+                    <h3>Descripción</h3>
+                    <p>
+                        La Línea Roca es una de las siete líneas de tren suburbano del Área Metropolitana de Buenos Aires.
+                        Tiene su cabecera en la estación Constitución (CABA) y recorre el sur del conurbano bonaerense
+                        hacia múltiples destinos: La Plata, Ezeiza, Alejandro Korn y Bosques.
+                    </p>
+                    <p>
+                        Es operada por Trenes Argentinos Operaciones (empresa estatal) desde el 2 de marzo de 2015.
+                        Cuenta con 9 ramales urbanos/suburbanos y 3 servicios de larga distancia
+                        (Mar del Plata, Bahía Blanca y Pinamar).
+                    </p>
+                </div>
+
+                <div class="info-bloque">
+                    <h3>Ramales principales</h3>
+                    <ul class="lista-ramales">
+                        <li>
+                            <strong>La Plata</strong> — Constitución → La Plata <em>(vía Quilmes y Berazategui)</em>
+                        </li>
+                        <li>
+                            <strong>Alejandro Korn</strong> — Constitución → Alejandro Korn <em>(vía Temperley)</em>
+                        </li>
+                        <li>
+                            <strong>Ezeiza</strong> — Constitución → Ezeiza <em>(vía Temperley)</em>
+                        </li>
+                        <li>
+                            <strong>Bosques vía Quilmes</strong> — Constitución → Bosques
+                        </li>
+                        <li>
+                            <strong>Bosques vía Temperley</strong> — Constitución → Gutiérrez
+                        </li>
+                        <li>
+                            <strong>Temperley – Haedo</strong> — ramal transversal
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="info-bloque">
+                    <h3>Municipios que recorre</h3>
+                    <ul class="lista-destinos">
+                        <li>Ciudad Autónoma de Buenos Aires</li>
+                        <li>Avellaneda</li>
+                        <li>Lanús</li>
+                        <li>Lomas de Zamora</li>
+                        <li>Quilmes</li>
+                        <li>Berazategui</li>
+                        <li>Almirante Brown</li>
+                        <li>Esteban Echeverría</li>
+                        <li>Ezeiza</li>
+                        <li>La Plata</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: PARADAS -->
+    <section id="paradas" class="seccion seccion-gris">
+        <div class="contenedor">
+            <h2>Paradas y estaciones</h2>
+            <p class="subtitulo-seccion">Seleccioná un ramal para ver sus estaciones</p>
+
+            <!-- Tabs de ramales — controlados por JavaScript -->
+            <div class="tabs-ramales" role="tablist" aria-label="Ramales de la Línea Roca">
+                <button class="tab activo" data-ramal="la-plata" role="tab" aria-selected="true">
+                    → La Plata
+                </button>
+                <button class="tab" data-ramal="alejandro-korn" role="tab" aria-selected="false">
+                    → Alejandro Korn
+                </button>
+                <button class="tab" data-ramal="ezeiza" role="tab" aria-selected="false">
+                    → Ezeiza
+                </button>
+                <button class="tab" data-ramal="bosques" role="tab" aria-selected="false">
+                    → Bosques
+                </button>
+            </div>
+
+            <!-- Buscador -->
+            <div class="buscador-paradas">
+                <input
+                    type="search"
+                    id="input-busqueda"
+                    placeholder="Buscar estación..."
+                    aria-label="Buscar estación por nombre"
+                    autocomplete="off"
+                >
+                <p id="contador-paradas" class="contador-paradas"></p>
+            </div>
+
+            <p id="sin-resultados" class="sin-resultados" style="display: none;">
+                No se encontraron estaciones con ese nombre.
+            </p>
+
+            <!-- RAMAL LA PLATA (19 estaciones, vía Quilmes/Berazategui) -->
+            <div id="ramal-la-plata" class="lista-paradas ramal-activo">
+                <div class="parada"><span class="numero-parada">01</span><div class="info-parada"><strong>Plaza Constitución</strong><span>Terminal — CABA</span></div><span class="tipo-parada terminal">Terminal</span></div>
+                <div class="parada"><span class="numero-parada">02</span><div class="info-parada"><strong>D. Santillán y M. Kosteki</strong><span>Avellaneda</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">03</span><div class="info-parada"><strong>Sarandí</strong><span>Avellaneda</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">04</span><div class="info-parada"><strong>Villa Domínico</strong><span>Avellaneda</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">05</span><div class="info-parada"><strong>Wilde</strong><span>Avellaneda</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">06</span><div class="info-parada"><strong>Don Bosco</strong><span>Quilmes</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">07</span><div class="info-parada"><strong>Bernal</strong><span>Quilmes</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">08</span><div class="info-parada"><strong>Quilmes</strong><span>Quilmes</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">09</span><div class="info-parada"><strong>Ezpeleta</strong><span>Quilmes</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">10</span><div class="info-parada"><strong>Berazategui</strong><span>Berazategui</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">11</span><div class="info-parada"><strong>Plátanos</strong><span>Berazategui</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">12</span><div class="info-parada"><strong>Hudson</strong><span>Berazategui</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">13</span><div class="info-parada"><strong>Pereyra</strong><span>Berazategui</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">14</span><div class="info-parada"><strong>Villa Elisa</strong><span>La Plata</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">15</span><div class="info-parada"><strong>City Bell</strong><span>La Plata</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">16</span><div class="info-parada"><strong>Gonnet</strong><span>La Plata</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">17</span><div class="info-parada"><strong>Ringuelet</strong><span>La Plata</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">18</span><div class="info-parada"><strong>Tolosa</strong><span>La Plata</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">19</span><div class="info-parada"><strong>La Plata</strong><span>Terminal — Capital de la Provincia de Buenos Aires</span></div><span class="tipo-parada terminal">Terminal</span></div>
+            </div>
+
+            <!-- RAMAL ALEJANDRO KORN (15 estaciones, vía Temperley/Lomas) -->
+            <div id="ramal-alejandro-korn" class="lista-paradas" style="display:none;">
+                <div class="parada"><span class="numero-parada">01</span><div class="info-parada"><strong>Plaza Constitución</strong><span>Terminal — CABA</span></div><span class="tipo-parada terminal">Terminal</span></div>
+                <div class="parada"><span class="numero-parada">02</span><div class="info-parada"><strong>Hipólito Yrigoyen</strong><span>CABA</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">03</span><div class="info-parada"><strong>D. Santillán y M. Kosteki</strong><span>Avellaneda</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">04</span><div class="info-parada"><strong>Gerli</strong><span>Avellaneda</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">05</span><div class="info-parada"><strong>Lanús</strong><span>Lanús</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">06</span><div class="info-parada"><strong>Remedios de Escalada</strong><span>Lanús</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">07</span><div class="info-parada"><strong>Banfield</strong><span>Lomas de Zamora</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">08</span><div class="info-parada"><strong>Lomas de Zamora</strong><span>Lomas de Zamora</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">09</span><div class="info-parada"><strong>Temperley</strong><span>Lomas de Zamora — nodo de transferencia</span></div><span class="tipo-parada nodo">Nodo</span></div>
+                <div class="parada"><span class="numero-parada">10</span><div class="info-parada"><strong>Adrogué</strong><span>Almirante Brown</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">11</span><div class="info-parada"><strong>Burzaco</strong><span>Almirante Brown</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">12</span><div class="info-parada"><strong>Longchamps</strong><span>Almirante Brown</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">13</span><div class="info-parada"><strong>Glew</strong><span>Almirante Brown</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">14</span><div class="info-parada"><strong>Guernica</strong><span>Presidente Perón</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">15</span><div class="info-parada"><strong>Alejandro Korn</strong><span>Terminal — San Vicente</span></div><span class="tipo-parada terminal">Terminal</span></div>
+            </div>
+
+            <!-- RAMAL EZEIZA (15 estaciones, vía Temperley) -->
+            <div id="ramal-ezeiza" class="lista-paradas" style="display:none;">
+                <div class="parada"><span class="numero-parada">01</span><div class="info-parada"><strong>Plaza Constitución</strong><span>Terminal — CABA</span></div><span class="tipo-parada terminal">Terminal</span></div>
+                <div class="parada"><span class="numero-parada">02</span><div class="info-parada"><strong>Hipólito Yrigoyen</strong><span>CABA</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">03</span><div class="info-parada"><strong>D. Santillán y M. Kosteki</strong><span>Avellaneda</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">04</span><div class="info-parada"><strong>Gerli</strong><span>Avellaneda</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">05</span><div class="info-parada"><strong>Lanús</strong><span>Lanús</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">06</span><div class="info-parada"><strong>Remedios de Escalada</strong><span>Lanús</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">07</span><div class="info-parada"><strong>Banfield</strong><span>Lomas de Zamora</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">08</span><div class="info-parada"><strong>Lomas de Zamora</strong><span>Lomas de Zamora</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">09</span><div class="info-parada"><strong>Temperley</strong><span>Lomas de Zamora — nodo de transferencia</span></div><span class="tipo-parada nodo">Nodo</span></div>
+                <div class="parada"><span class="numero-parada">10</span><div class="info-parada"><strong>Turdera</strong><span>Lomas de Zamora</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">11</span><div class="info-parada"><strong>Lavallol</strong><span>Lomas de Zamora</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">12</span><div class="info-parada"><strong>Guillón</strong><span>Lomas de Zamora</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">13</span><div class="info-parada"><strong>Monte Grande</strong><span>Esteban Echeverría</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">14</span><div class="info-parada"><strong>El Jagüel</strong><span>Esteban Echeverría</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">15</span><div class="info-parada"><strong>Ezeiza</strong><span>Terminal — Ezeiza</span></div><span class="tipo-parada terminal">Terminal</span></div>
+            </div>
+
+            <!-- RAMAL BOSQUES VÍA QUILMES (13 estaciones) -->
+            <div id="ramal-bosques" class="lista-paradas" style="display:none;">
+                <div class="parada"><span class="numero-parada">01</span><div class="info-parada"><strong>Plaza Constitución</strong><span>Terminal — CABA</span></div><span class="tipo-parada terminal">Terminal</span></div>
+                <div class="parada"><span class="numero-parada">02</span><div class="info-parada"><strong>Sarandí</strong><span>Avellaneda</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">03</span><div class="info-parada"><strong>Villa Domínico</strong><span>Avellaneda</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">04</span><div class="info-parada"><strong>Wilde</strong><span>Avellaneda</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">05</span><div class="info-parada"><strong>Don Bosco</strong><span>Quilmes</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">06</span><div class="info-parada"><strong>Bernal</strong><span>Quilmes</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">07</span><div class="info-parada"><strong>Quilmes</strong><span>Quilmes</span></div><span class="tipo-parada">Parada</span></div>
+                                <div class="parada"><span class="numero-parada">08</span><div class="info-parada"><strong>Ezpeleta</strong><span>Quilmes</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">09</span><div class="info-parada"><strong>Berazategui</strong><span>Berazategui</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">10</span><div class="info-parada"><strong>Villa España</strong><span>Berazategui</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">11</span><div class="info-parada"><strong>Ranelagh</strong><span>Berazategui</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">12</span><div class="info-parada"><strong>Sourigues</strong><span>Berazategui</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">13</span><div class="info-parada"><strong>Bosques</strong><span>Terminal — Florencio Varela</span></div><span class="tipo-parada terminal">Terminal</span></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN: MAPA -->
+    <section id="mapa" class="seccion">
+        <div class="contenedor">
+            <h2>Mapa del recorrido</h2>
+            <p class="subtitulo-seccion">Ramal principal: Constitución (CABA) → La Plata (Provincia de Buenos Aires)</p>
+
+            <div class="mapa-contenedor">
+                <iframe
+                    title="Mapa del recorrido de la Línea Roca entre Constitución y La Plata"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=-58.45%2C-35.0%2C-57.85%2C-34.55&layer=mapnik"
+                    width="100%"
+                    height="420"
+                    style="border: none; border-radius: 8px;"
+                    allowfullscreen
+                    loading="lazy"
+                ></iframe>
+
+                <div class="mapa-leyenda">
+                    <div class="leyenda-item">
+                        <span class="punto terminal-inicio"></span>
+                        <span>Constitución — Terminal norte (CABA)</span>
+                    </div>
+                    <div class="leyenda-item">
+                        <span class="punto nodo-transfer"></span>
+                        <span>Temperley — Nodo de transferencia entre ramales</span>
+                    </div>
+                    <div class="leyenda-item">
+                        <span class="punto terminal-fin"></span>
+                        <span>La Plata — Terminal sur (Capital bonaerense)</span>
+                    </div>
+                    <a
+                        href="https://www.google.com/maps/dir/Estaci%C3%B3n+Constituci%C3%B3n/Estaci%C3%B3n+La+Plata"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn-mapa"
+                    >
+                        Ver ruta completa en Google Maps
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: HORARIOS -->
+    <section id="horarios" class="seccion seccion-gris">
+        <div class="contenedor">
+            <h2>Horarios del servicio</h2>
+            <p class="subtitulo-seccion">Ramal La Plata — Días hábiles (selección de horarios)</p>
+
+            <div class="tablas-horarios">
+                <div class="tabla-contenedor">
+                    <h3>Constitución → La Plata</h3>
+                    <table>
+                        <caption>Horarios de salida desde Constitución hacia La Plata</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Horario</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Duración aprox.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>05:15</td><td>Común</td><td>1h 10min</td></tr>
+                            <tr><td>05:45</td><td>Común</td><td>1h 10min</td></tr>
+                            <tr><td>06:15</td><td>Común</td><td>1h 10min</td></tr>
+                            <tr><td>06:45</td><td>Común</td><td>1h 10min</td></tr>
+                            <tr><td>07:15</td><td>Común</td><td>1h 10min</td></tr>
+                            <tr><td>07:45</td><td>Común</td><td>1h 10min</td></tr>
+                            <tr><td>08:15</td><td>Común</td><td>1h 10min</td></tr>
+                            <tr><td>12:00</td><td>Común</td><td>1h 10min</td></tr>
+                            <tr><td>17:00</td><td>Común</td><td>1h 10min</td></tr>
+                            <tr><td>18:00</td><td>Común</td><td>1h 10min</td></tr>
+                            <tr><td>19:00</td><td>Común</td><td>1h 10min</td></tr>
+                            <tr><td>20:00</td><td>Común</td><td>1h 10min</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tabla-contenedor">
+                    <h3>La Plata → Constitución</h3>
+                    <table>
+                        <caption>Horarios de salida desde La Plata hacia Constitución</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Horario</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Duración aprox.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>04:50</td><td>Común</td><td>1h 10min</td></tr>
+                            <tr><td>05:20</td><td>Común</td><td>1h 10min</td></tr>
+                            <tr><td>05:50</td><td>Común</td><td>1h 10min</td></tr>
+                            <tr><td>06:20</td><td>Común</td><td>1h 10min</td></tr>
+                            <tr><td>06:50</td><td>Común</td><td>1h 10min</td></tr>
+                            <tr><td>07:20</td><td>Común</td><td>1h 10min</td></tr>
+                            <tr><td>07:50</td><td>Común</td><td>1h 10min</td></tr>
+                            <tr><td>12:30</td><td>Común</td><td>1h 10min</td></tr>
+                            <tr><td>16:30</td><td>Común</td><td>1h 10min</td></tr>
+                            <tr><td>17:30</td><td>Común</td><td>1h 10min</td></tr>
+                            <tr><td>18:30</td><td>Común</td><td>1h 10min</td></tr>
+                            <tr><td>19:30</td><td>Común</td><td>1h 10min</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <p class="nota-horarios">
+                * Los horarios son orientativos. Consultá el horario completo y actualizado en
+                <a href="https://www.trenroca.com.ar/horarios/constitucion-la-plata.html" target="_blank" rel="noopener noreferrer">
+                    trenroca.com.ar
+                </a>.
+            </p>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: ACCESIBILIDAD -->
+    <section id="accesibilidad" class="seccion">
+        <div class="contenedor">
+            <h2>Accesibilidad</h2>
+            <p>La Línea Roca cuenta con medidas de accesibilidad para garantizar el uso del servicio a todas las personas.</p>
+
+            <div class="accesibilidad-grid">
+                <div class="accesibilidad-item">
+                    <div class="icono-acceso" aria-hidden="true">♿</div>
+                    <h3>Rampas y accesos</h3>
+                    <p>Las estaciones principales cuentan con rampas de acceso en las entradas y accesos al andén.</p>
+                </div>
+                <div class="accesibilidad-item">
+                    <div class="icono-acceso" aria-hidden="true">🪑</div>
+                    <h3>Espacios para silla de ruedas</h3>
+                    <p>Los coches del tren tienen espacios reservados para personas con movilidad reducida y usuarios de silla de ruedas.</p>
+                </div>
+                <div class="accesibilidad-item">
+                    <div class="icono-acceso" aria-hidden="true">🔊</div>
+                    <h3>Señalización sonora</h3>
+                    <p>Las estaciones disponen de anuncios sonoros indicando llegada de trenes y nombre de la estación.</p>
+                </div>
+                <div class="accesibilidad-item">
+                    <div class="icono-acceso" aria-hidden="true">👁️</div>
+                    <h3>Señalización visual</h3>
+                    <p>Carteles con tipografía legible, alto contraste y señalización en las estaciones para orientar al pasajero.</p>
+                </div>
+                <div class="accesibilidad-item">
+                    <div class="icono-acceso" aria-hidden="true">💳</div>
+                    <h3>SUBE sin cargo</h3>
+                    <p>Personas con discapacidad acceden al servicio de forma gratuita con tarjeta SUBE registrada.</p>
+                </div>
+                <div class="accesibilidad-item">
+                    <div class="icono-acceso" aria-hidden="true">👮</div>
+                    <h3>Personal de asistencia</h3>
+                    <p>En las estaciones más concurridas hay personal disponible para asistir a pasajeros que lo necesiten.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <div class="contenedor contenedor-footer">
+            <div class="footer-bloque">
+                <p class="footer-titulo">GeoTransporte</p>
+                <p>Proyecto académico — UADE 2026</p>
+            </div>
+            <div class="footer-bloque">
+                <p class="footer-titulo">Línea Roca</p>
+                <p>Servicio de tren regional del sur del AMBA</p>
+                <p>Operado por Trenes Argentinos Operaciones</p>
+            </div>
+            <div class="footer-bloque">
+                <p class="footer-titulo">Información útil</p>
+                <ul>
+                    <li><a href="https://www.trenroca.com.ar" target="_blank" rel="noopener noreferrer">trenroca.com.ar</a></li>
+                    <li><a href="https://www.argentina.gob.ar/transporte/trenes" target="_blank" rel="noopener noreferrer">Trenes Argentinos</a></li>
+                    <li><a href="https://www.sube.gob.ar" target="_blank" rel="noopener noreferrer">Tarjeta SUBE</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer-copy">© 2026 — GeoTransporte · Grupo 10 · UADE</p>
+    </footer>
+
+</body>
+</html>

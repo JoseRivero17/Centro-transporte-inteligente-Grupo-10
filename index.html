@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoTransporte — Centro de Transporte Inteligente</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <div class="contenedor-header">
+            <div class="logo">
+                <span class="logo-icono">🚉</span>
+                <div>
+                    <h1 class="logo-nombre">GeoTransporte</h1>
+                    <p class="logo-subtitulo">Centro de Transporte Inteligente</p>
+                </div>
+            </div>
+            <nav aria-label="Navegación principal">
+                <ul>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#identidad">Identidad</a></li>
+                    <li><a href="#sitemap">Mapa del sitio</a></li>
+                    <li><a href="#frameworks">Tecnologías</a></li>
+                    <li><a href="#proyecto">Proyecto</a></li>
+                    <li><a href="#equipo">Equipo</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="contenedor">
+            <p class="hero-tag">Proyecto grupal · UADE 2026 · Grupo 10</p>
+            <h2>Conectamos personas,<br>inteligentemente.</h2>
+            <p class="hero-desc">
+                GeoTransporte es un centro de transporte multimodal del sur del Gran Buenos Aires.
+                Integramos tren, colectivo, transporte universitario y turístico en un solo lugar.
+            </p>
+            <a href="#servicios" class="btn-hero">Ver servicios</a>
+        </div>
+    </section>
+
+    <!-- SERVICIOS / PÁGINAS INDIVIDUALES -->
+    <section id="servicios" class="seccion">
+        <div class="contenedor">
+            <h2>Nuestros servicios</h2>
+            <p class="subtitulo">Cada servicio tiene su propia página con horarios, paradas, mapa y accesibilidad.</p>
+
+            <div class="grilla-servicios">
+
+                <!-- Línea Roca — José -->
+                <article class="tarjeta-servicio">
+                    <div class="tarjeta-icono tren">🚆</div>
+                    <div class="tarjeta-cuerpo">
+                        <span class="tarjeta-tipo">Tren regional</span>
+                        <h3>Línea Roca</h3>
+                        <p>Servicio ferroviario que une Constitución con La Plata y el sur del conurbano bonaerense.</p>
+                        <ul class="tarjeta-datos">
+                            <li>Recorrido: Constitución → La Plata</li>
+                            <li>Ramales: La Plata, Bosques, Ezeiza</li>
+                            <li>Operadora: Trenes Argentinos</li>
+                        </ul>
+                        <a href="linea-roca.html" class="btn-tarjeta">Ver página</a>
+                    </div>
+                </article>
+
+                <!-- Colectivo urbano — Thomas -->
+                <article class="tarjeta-servicio">
+                    <div class="tarjeta-icono colectivo">🚌</div>
+                    <div class="tarjeta-cuerpo">
+                        <span class="tarjeta-tipo">Colectivo urbano</span>
+                        <h3>Línea 79</h3>
+                        <p>Servicio de colectivo urbano que conecta el centro de Lanús con el centro porteño.</p>
+                        <ul class="tarjeta-datos">
+                            <li>Recorrido: Lanús → Plaza de Mayo</li>
+                            <li>Paradas: 24 en total</li>
+                            <li>Operadora: Transportes Metropolitanos</li>
+                        </ul>
+                        <a href="colectivo-urbano.html" class="btn-tarjeta proximamente">Próximamente</a>
+                    </div>
+                </article>
+
+                <!-- Transporte universitario — Rodrigo -->
+                <article class="tarjeta-servicio">
+                    <div class="tarjeta-icono universitario">🎓</div>
+                    <div class="tarjeta-cuerpo">
+                        <span class="tarjeta-tipo">Transporte universitario</span>
+                        <h3>Shuttle UADE – Roca</h3>
+                        <p>Servicio de shuttle directo para estudiantes entre la estación Constitución y el campus UADE.</p>
+                        <ul class="tarjeta-datos">
+                            <li>Recorrido: Constitución → UADE</li>
+                            <li>Frecuencia: días hábiles</li>
+                            <li>Público: estudiantes y docentes</li>
+                        </ul>
+                        <a href="transporte-universitario.html" class="btn-tarjeta proximamente">Próximamente</a>
+                    </div>
+                </article>
+
+                <!-- Transporte turístico — Luis -->
+                <article class="tarjeta-servicio">
+                    <div class="tarjeta-icono turistico">🏛️</div>
+                    <div class="tarjeta-cuerpo">
+                        <span class="tarjeta-tipo">Transporte turístico</span>
+                        <h3>Circuito Sur</h3>
+                        <p>Servicio turístico que recorre los principales atractivos del sur del GBA y la ciudad de La Plata.</p>
+                        <ul class="tarjeta-datos">
+                            <li>Recorrido: Buenos Aires → La Plata</li>
+                            <li>Paradas: museos, parques y reservas</li>
+                            <li>Frecuencia: fines de semana</li>
+                        </ul>
+                        <a href="transporte-turistico.html" class="btn-tarjeta proximamente">Próximamente</a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- IDENTIDAD VISUAL -->
+    <section id="identidad" class="seccion seccion-oscura">
+        <div class="contenedor">
+            <h2 class="titulo-claro">Identidad visual</h2>
+            <p class="subtitulo claro">La propuesta visual de GeoTransporte combina tecnología, claridad y accesibilidad.</p>
+
+            <div class="grilla-identidad">
+
+                <div class="identidad-bloque">
+                    <h3>Paleta de colores</h3>
+                    <div class="paleta">
+                        <div class="muestra-color" style="background-color: #0d1b2a;">
+                            <span class="hex">#0d1b2a</span>
+                            <span class="nombre-color">Azul base</span>
+                        </div>
+                        <div class="muestra-color" style="background-color: #00c9b1;">
+                            <span class="hex">#00c9b1</span>
+                            <span class="nombre-color">Teal acento</span>
+                        </div>
+                        <div class="muestra-color" style="background-color: #3d8ef8;">
+                            <span class="hex">#3d8ef8</span>
+                            <span class="nombre-color">Azul interactivo</span>
+                        </div>
+                        <div class="muestra-color claro" style="background-color: #f7f9fc; border: 1px solid #ddd;">
+                            <span class="hex" style="color: #333;">#f7f9fc</span>
+                            <span class="nombre-color" style="color: #555;">Fondo claro</span>
+                        </div>
+                    </div>
+                    <p class="identidad-justif">
+                        El azul oscuro transmite confianza y tecnología. El teal diferencia la marca de otros centros
+                        de transporte y aporta un tono moderno. El azul medio se usa solo en elementos interactivos
+                        para guiar al usuario.
+                    </p>
+                </div>
+
+                <div class="identidad-bloque">
+                    <h3>Tipografía</h3>
+                    <div class="muestra-tipografia">
+                        <p class="tipo-titulo">Poppins 700</p>
+                        <p class="tipo-subtitulo">Poppins 600</p>
+                        <p class="tipo-cuerpo">Poppins 400 — texto de cuerpo y descripciones.</p>
+                        <p class="tipo-small">Poppins 500 — etiquetas y metadatos</p>
+                    </div>
+                    <p class="identidad-justif">
+                        Poppins es una fuente geométrica sans-serif de Google Fonts. Es legible en pantallas de cualquier
+                        tamaño, gratuita y muy usada en interfaces digitales modernas. Su estilo redondeado es amigable
+                        para un servicio de transporte público.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="figma-cta">
+                <p>¿Querés ver los wireframes y el prototipo del proyecto?</p>
+                <a href="https://www.figma.com/design/9lpdKKjLLsfMPxaqhNQzon" target="_blank" rel="noopener noreferrer" class="btn-figma">
+                    🎨 Ver carpeta de diseño en Figma →
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FRAMEWORKS Y TECNOLOGÍAS -->
+    <section id="frameworks" class="seccion seccion-gris">
+        <div class="contenedor">
+            <h2>Frameworks y tecnologías</h2>
+            <p class="subtitulo">Investigación de herramientas que podrían utilizarse en el desarrollo de GeoTransporte.</p>
+
+            <div class="grilla-frameworks">
+
+                <!-- Bootstrap -->
+                <div class="framework-card">
+                    <div class="fw-header fw-bootstrap">
+                        <span class="fw-icono">🅱️</span>
+                        <div>
+                            <h3>Bootstrap 5</h3>
+                            <span class="fw-tipo">Framework CSS</span>
+                        </div>
+                    </div>
+                    <div class="fw-cuerpo">
+                        <div class="fw-bloque">
+                            <h4>Función en el proyecto</h4>
+                            <p>Proporciona un sistema de grillas responsive y componentes prediseñados (navbar, tablas, cards) que se usarían en todas las páginas del sitio para garantizar coherencia visual y adaptación a distintos tamaños de pantalla.</p>
+                        </div>
+                        <div class="fw-bloque">
+                            <h4>Justificación</h4>
+                            <p>Bootstrap es el framework CSS más utilizado del mundo. Su sistema de 12 columnas facilita armar layouts complejos sin escribir CSS desde cero. Para un equipo de 4 personas, garantiza que todas las páginas individuales mantengan una estructura visual uniforme sin necesidad de coordinación constante.</p>
+                        </div>
+                        <a href="https://getbootstrap.com" target="_blank" rel="noopener noreferrer" class="fw-link">getbootstrap.com →</a>
+                    </div>
+                </div>
+
+                <!-- Leaflet.js -->
+                <div class="framework-card">
+                    <div class="fw-header fw-leaflet">
+                        <span class="fw-icono">🗺️</span>
+                        <div>
+                            <h3>Leaflet.js</h3>
+                            <span class="fw-tipo">Librería JavaScript — Mapas</span>
+                        </div>
+                    </div>
+                    <div class="fw-cuerpo">
+                        <div class="fw-bloque">
+                            <h4>Función en el proyecto</h4>
+                            <p>Permitiría mostrar un mapa interactivo del recorrido de cada línea, con marcadores clickeables en cada estación que muestren información adicional (horarios, accesibilidad, conexiones con otros servicios).</p>
+                        </div>
+                        <div class="fw-bloque">
+                            <h4>Justificación</h4>
+                            <p>Leaflet es una librería de mapas open source que no requiere API key ni cuenta de pago, a diferencia de Google Maps. Es liviana (42 KB), muy documentada y funciona directamente con OpenStreetMap. Para un sitio de transporte, un mapa interactivo con paradas clickeables mejora significativamente la experiencia del usuario frente a una imagen estática.</p>
+                        </div>
+                        <a href="https://leafletjs.com" target="_blank" rel="noopener noreferrer" class="fw-link">leafletjs.com →</a>
+                    </div>
+                </div>
+
+                <!-- Vue.js -->
+                <div class="framework-card">
+                                        <div class="fw-header fw-vue">
+                        <span class="fw-icono">💚</span>
+                        <div>
+                            <h3>Vue.js</h3>
+                            <span class="fw-tipo">Framework JavaScript Front-End</span>
+                        </div>
+                    </div>
+                    <div class="fw-cuerpo">
+                        <div class="fw-bloque">
+                            <h4>Función en el proyecto</h4>
+                            <p>Se usaría para construir componentes dinámicos reutilizables: el buscador de paradas en tiempo real, el selector de ramales con tabs, y un filtro de horarios por franja horaria (mañana / tarde / noche).</p>
+                        </div>
+                        <div class="fw-bloque">
+                            <h4>Justificación</h4>
+                            <p>Vue.js permite agregar interactividad progresiva a páginas HTML existentes sin reescribir todo el proyecto. Es más sencillo de aprender que React, ideal para un equipo en etapa de formación. Su sistema de directivas (<code>v-for</code>, <code>v-if</code>) simplifica el renderizado dinámico de listas como paradas u horarios.</p>
+                        </div>
+                        <a href="https://vuejs.org" target="_blank" rel="noopener noreferrer" class="fw-link">vuejs.org →</a>
+                    </div>
+                </div>
+
+                <!-- Tailwind CSS -->
+                <div class="framework-card">
+                    <div class="fw-header fw-tailwind">
+                        <span class="fw-icono">🌊</span>
+                        <div>
+                            <h3>Tailwind CSS</h3>
+                            <span class="fw-tipo">Framework CSS utilitario</span>
+                        </div>
+                    </div>
+                    <div class="fw-cuerpo">
+                        <div class="fw-bloque">
+                            <h4>Función en el proyecto</h4>
+                            <p>Permitiría aplicar los colores y espaciados del sistema de diseño de GeoTransporte directamente desde el HTML con clases utilitarias, manteniendo coherencia visual entre todas las páginas sin CSS personalizado por componente.</p>
+                        </div>
+                        <div class="fw-bloque">
+                            <h4>Justificación</h4>
+                            <p>Tailwind reemplaza el CSS tradicional por clases como <code>bg-blue-900</code> o <code>text-teal-400</code>, lo que acelera el desarrollo y reduce archivos CSS. Es especialmente útil con múltiples páginas (como las 4 individuales del TPO) donde mantener coherencia visual es prioritario. Actualmente es uno de los frameworks CSS más populares en la industria.</p>
+                        </div>
+                        <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" class="fw-link">tailwindcss.com →</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <p class="nota-frameworks">
+                Nota: ninguno de estos frameworks está implementado en la versión actual del sitio. La elección se basa en investigación sobre su uso, documentación y pertinencia para el tipo de proyecto desarrollado.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- SOBRE EL PROYECTO -->
+    <section id="proyecto" class="seccion seccion-oscura">
+        <div class="contenedor">
+            <h2>Sobre el proyecto</h2>
+            <p class="subtitulo">Contexto, audiencia y decisiones de diseño detrás de GeoTransporte.</p>
+
+            <!-- Contexto y ubicación -->
+            <div class="proyecto-bloque">
+                <div class="proyecto-icono">📍</div>
+                <div class="proyecto-texto">
+                    <h3>Contexto y ubicación</h3>
+                    <p>
+                        GeoTransporte surge como respuesta a la fragmentación de la información sobre transporte público
+                        en el corredor sur del Área Metropolitana de Buenos Aires (AMBA). La zona abarca desde la Ciudad
+                        de Buenos Aires hasta el Gran La Plata, pasando por municipios como Lomas de Zamora, Quilmes,
+                        Berazategui, Florencio Varela y Ezeiza — un territorio con más de <strong>4 millones de habitantes</strong>
+                        y una red de transporte multimodal entre las más densas del país.
+                    </p>
+                    <p>
+                        El proyecto es desarrollado en el marco de la materia <em>Diseño y Desarrollo Web</em> de la
+                        carrera de Ingeniería Informática en UADE (2026). Tomamos como caso de estudio real la
+                        <strong>Línea Roca</strong> (ramal Constitución–La Plata y sus derivaciones), que moviliza
+                        aproximadamente 180.000 pasajeros diarios, complementada con información de colectivos
+                        interurbanos, transporte universitario y circuitos turísticos regionales.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Público objetivo -->
+            <div class="proyecto-bloque">
+                <div class="proyecto-icono">👥</div>
+                <div class="proyecto-texto">
+                    <h3>Público objetivo</h3>
+                    <p>
+                        Identificamos tres grupos de usuarios principales, con distintas necesidades y contextos de uso:
+                    </p>
+                    <ul class="proyecto-lista">
+                        <li>
+                            <strong>Pasajeros diarios (estudiantes y trabajadores)</strong> — El núcleo de la audiencia.
+                            Usan transporte público de lunes a viernes, necesitan horarios precisos y estado de servicio
+                            en tiempo real. Acceden mayormente desde dispositivos móviles, en movimiento o en la estación.
+                            Justificación: representan el 80% del tráfico estimado; el diseño prioriza velocidad de carga
+                            y navegación con una mano.
+                        </li>
+                        <li>
+                            <strong>Usuarios con necesidades de accesibilidad</strong> — Personas con movilidad reducida,
+                            adultos mayores o con discapacidad visual que requieren información sobre rampas, ascensores
+                            y servicios adaptados en cada estación. Justificación: la Línea Roca tiene una cobertura
+                            geográfica amplia con niveles de accesibilidad heterogéneos; centralizar esta información
+                            reduce barreras de acceso al transporte.
+                        </li>
+                        <li>
+                            <strong>Turistas y visitantes</strong> — Personas que llegan al corredor sur desde otras
+                            regiones para visitar La Plata, Quilmes o la zona costera. Necesitan orientación sobre
+                            recorridos, conexiones y puntos de interés. Justificación: La Plata recibe más de 500.000
+                            visitantes anuales; la Línea Roca es el acceso directo más económico desde CABA.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Justificación de diseño -->
+            <div class="proyecto-bloque">
+                <div class="proyecto-icono">🎨</div>
+                <div class="proyecto-texto">
+                    <h3>Justificación de diseño</h3>
+                    <p>
+                        Las decisiones visuales de GeoTransporte responden a criterios funcionales concretos,
+                        no a preferencias arbitrarias:
+                    </p>
+                    <ul class="proyecto-lista">
+                        <li>
+                            <strong>Tema oscuro (<code>#0d1b2a</code>)</strong> — Los usuarios de transporte
+                            frecuentemente consultan información en entornos con luz variable (andenes, colectivos,
+                            noche). El fondo oscuro reduce la fatiga visual y el consumo de batería en pantallas OLED,
+                            dos factores críticos para el usuario móvil en tránsito.
+                        </li>
+                        <li>
+                            <strong>Acento teal (<code>#00c9b1</code>)</strong> — El verde-azulado ofrece
+                            contraste WCAG AA sobre fondos oscuros, transmite tecnología y modernidad, y se diferencia
+                            claramente de los colores identificatorios de cada línea (rojo Roca, naranja colectivos,
+                            violeta universitario, verde turístico), evitando confusión semántica.
+                        </li>
+                        <li>
+                            <strong>Tipografía Poppins (sans-serif geométrica)</strong> — Legibilidad alta en
+                            pantallas pequeñas, aspecto contemporáneo que refuerza la identidad tech del proyecto, y
+                            disponible gratuitamente en Google Fonts sin penalizar el rendimiento de carga.
+                        </li>
+                        <li>
+                            <strong>Codificación cromática por servicio</strong> — Cada modo de transporte tiene
+                            su color propio (coherente con la señalética real), lo que permite al usuario identificar
+                            de un vistazo a qué servicio pertenece cada sección, sin necesidad de leer el texto.
+                        </li>
+                        <li>
+                            <strong>Diseño responsivo mobile-first</strong> — Las estadísticas de INDEC 2024
+                            indican que el 73% de los argentinos accede a internet principalmente desde su celular.
+                            El layout en grilla de una columna para móvil, con expansión a múltiples columnas en
+                            desktop, garantiza usabilidad en el contexto real de uso del público objetivo.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- MAPA DEL SITIO -->
+    <section id="sitemap" class="seccion">
+        <div class="contenedor">
+            <h2>Mapa del sitio</h2>
+            <p class="subtitulo">Estructura de páginas del proyecto GeoTransporte.</p>
+
+            <div class="sitemap">
+                <div class="sitemap-nodo raiz">
+                    <span>🏠 index.html</span>
+                    <small>Página principal</small>
+                </div>
+                <div class="sitemap-ramas">
+                    <div class="sitemap-nodo hoja tren">
+                        <span>🚆 linea-roca.html</span>
+                        <small>Tren regional</small>
+                    </div>
+                    <div class="sitemap-nodo hoja colectivo">
+                        <span>🚌 colectivo-urbano.html</span>
+                        <small>Colectivo urbano</small>
+                    </div>
+                    <div class="sitemap-nodo hoja universitario">
+                        <span>🎓 transporte-universitario.html</span>
+                        <small>Transporte universitario</small>
+                    </div>
+                    <div class="sitemap-nodo hoja turistico">
+                        <span>🏛️ transporte-turistico.html</span>
+                        <small>Transporte turístico</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EQUIPO -->
+    <section id="equipo" class="seccion seccion-gris">
+        <div class="contenedor">
+            <h2>Equipo — Grupo 10</h2>
+            <p class="subtitulo">Cada integrante desarrolló una página individual del centro de transporte.</p>
+
+            <div class="grilla-equipo">
+                <div class="tarjeta-integrante">
+                    <div class="avatar tren">JR</div>
+                    <h3>José Rivero</h3>
+                    <p>Línea Roca — Tren regional</p>
+                    <a href="linea-roca.html">Ver página →</a>
+                </div>
+                <div class="tarjeta-integrante">
+                    <div class="avatar colectivo">TN</div>
+                    <h3>Thomas Naughton</h3>
+                    <p>Línea 79 — Colectivo urbano</p>
+                    <span class="pendiente">En desarrollo</span>
+                </div>
+                <div class="tarjeta-integrante">
+                    <div class="avatar universitario">RF</div>
+                    <h3>Rodrigo Figueroa</h3>
+                    <p>Shuttle UADE — Transporte universitario</p>
+                    <span class="pendiente">En desarrollo</span>
+                </div>
+                <div class="tarjeta-integrante">
+                    <div class="avatar turistico">LL</div>
+                    <h3>Luis Lin</h3>
+                    <p>Circuito Sur — Transporte turístico</p>
+                    <span class="pendiente">En desarrollo</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="contenedor contenedor-footer">
+            <div class="footer-bloque">
+                <p class="footer-logo">GeoTransporte</p>
+                <p>Centro de Transporte Inteligente</p>
+            </div>
+            <div class="footer-bloque">
+                <p class="footer-titulo">Páginas del proyecto</p>
+                <ul>
+                    <li><a href="linea-roca.html">Línea Roca</a></li>
+                    <li><a href="colectivo-urbano.html">Colectivo Urbano</a></li>
+                    <li><a href="transporte-universitario.html">Transporte Universitario</a></li>
+                    <li><a href="transporte-turistico.html">Transporte Turístico</a></li>
+                </ul>
+            </div>
+            <div class="footer-bloque">
+                <p class="footer-titulo">Proyecto académico</p>
+                <p>Diseño y Desarrollo Web</p>
+                <p>UADE · 2026 · Grupo 10</p>
+                <p style="margin-top: 0.75rem;">
+                    <a href="https://www.figma.com/design/9lpdKKjLLsfMPxaqhNQzon" target="_blank" rel="noopener noreferrer" style="color: var(--color-acento); font-weight: 600;">
+                        🎨 Carpeta de diseño en Figma →
+                    </a>
+                </p>
+            </div>
+        </div>
+        <p class="footer-copy">© 2026 GeoTransporte · Grupo 10 · UADE</p>
+    </footer>
+
+</body>
+</html>

@@ -649,7 +649,27 @@ nav ul li a:hover {
 }
 
 .tarjeta-integrante a {
-    
+    color: var(--color-azul);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.tarjeta-integrante a:hover {
+    text-decoration: underline;
+}
+
+.pendiente {
+    display: inline-block;
+    margin-top: 4px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background-color: var(--color-fondo-alt);
+    color: var(--color-texto-suave);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
 /* ===================================================
    SECCIÓN: SOBRE EL PROYECTO
    =================================================== */
@@ -793,4 +813,117 @@ nav ul li a:hover {
 .btn-figma:hover {
     opacity: 0.88;
     transform: translateY(-2px);
+}
+
+
+/* ===================================================
+   CORRECCIÓN DE CONTRASTE Y FOOTER — agregado
+   =================================================== */
+
+.seccion-oscura {
+    background-color: var(--color-base);
+    color: var(--color-blanco);
+}
+
+.seccion-oscura h2,
+.seccion-oscura .titulo-claro,
+.seccion-oscura .subtitulo,
+.seccion-oscura h3,
+.seccion-oscura p,
+.seccion-oscura li {
+    color: var(--color-blanco);
+}
+
+.seccion-oscura .subtitulo,
+.seccion-oscura .identidad-justif,
+.seccion-oscura .proyecto-texto p,
+.seccion-oscura .proyecto-lista li,
+.seccion-oscura .figma-cta p {
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.seccion-oscura .identidad-bloque h3,
+.seccion-oscura .proyecto-texto h3 {
+    color: var(--color-acento);
+}
+
+.muestra-tipografia,
+.proyecto-bloque,
+.figma-cta {
+    background-color: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.16);
+}
+
+footer {
+    background-color: var(--color-base);
+    color: var(--color-blanco);
+    padding: 40px 0 15px;
+    border-top: 3px solid var(--color-acento);
+}
+
+.contenedor-footer {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 28px;
+}
+
+.footer-bloque {
+    min-width: 180px;
+}
+
+.footer-logo,
+.footer-titulo {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--color-acento);
+    margin-bottom: 10px;
+}
+
+.footer-bloque p,
+.footer-bloque a {
+    font-size: 0.83rem;
+    color: rgba(255, 255, 255, 0.78);
+    text-decoration: none;
+}
+
+.footer-bloque a:hover {
+    color: var(--color-acento);
+}
+
+.footer-bloque ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-bloque ul li {
+    margin-bottom: 5px;
+}
+
+.footer-copy {
+    text-align: center;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.55);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+}
+
+@media (max-width: 640px) {
+    .contenedor-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        gap: 4px;
+    }
+
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+
+    .contenedor-footer {
+        flex-direction: column;
+    }
 }

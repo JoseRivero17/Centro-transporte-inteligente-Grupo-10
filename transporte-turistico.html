@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Circuito Sur</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="transporte-turistico.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Circuito Sur</div>
+
+        <ul class="menu">
+          <li><a href="#">Experiencia</a></li>
+          <li><a href="#">Paradas</a></li>
+          <li><a href="#">Horarios</a></li>
+          <li><a href="#">Accesibilidad</a></li>
+        </ul>
+
+        <button class="btn-primary">Reservar ahora</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-content">
+
+      <div>
+        <div class="badge">CONECTANDO CIUDADES</div>
+
+        <h1>
+          Buenos Aires
+          <span>→</span>
+          La Plata
+        </h1>
+
+        <p>
+          Descubra la ruta cultural más sofisticada del sur.
+          Un recorrido curado que une el ritmo porteño con la
+          elegancia planificada de la ciudad de las diagonales.
+        </p>
+
+        <div class="hero-buttons">
+          <button class="btn-dark">Reservar Viaje</button>
+          <button class="btn-outline">Ver Itinerario</button>
+        </div>
+      </div>
+
+      <div class="schedule-card">
+        <div class="icon">🚌</div>
+
+        <h3>Siguiente Salida</h3>
+
+        <div class="time" id="nextDeparture">
+          10:45 AM
+        </div>
+
+        <p>Terminal Retiro, CABA</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PARADAS -->
+  <section>
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Paradas Destacadas</h2>
+
+        <p>
+          Explora la riqueza arquitectónica y natural en puntos
+          estratégicos seleccionados para tu confort y enriquecimiento cultural.
+        </p>
+      </div>
+
+      <div class="cards">
+
+        <div class="card">
+          <div class="card-icon">🏛️</div>
+
+          <h3>Museo de Ciencias</h3>
+
+          <p>
+            Referente mundial por su arquitectura neoclásica y sus colecciones
+            únicas en el corazón del Bosque de La Plata.
+          </p>
+
+          <span class="tag">PARADA CULTURAL</span>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🌲</div>
+
+          <h3>Paseo del Bosque</h3>
+
+          <p>
+            El pulmón verde más grande de la ciudad,
+            ideal para caminatas recreativas entre lagos y especies centenarias.
+          </p>
+
+          <span class="tag">NATURALEZA</span>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🎡</div>
+
+          <h3>República de los Niños</h3>
+
+          <p>
+            El primer parque temático de América,
+            una ciudad a escala diseñada para la formación cívica y el ocio.
+          </p>
+
+          <span class="tag">FAMILIAR</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HORARIOS -->
+  <section>
+    <div class="container schedule-section">
+
+      <div class="schedule-info">
+        <h2>Frecuencias y Horarios Compactos</h2>
+
+        <p>
+          Optimice su tiempo con nuestras salidas puntuales.
+          Operamos con máxima eficiencia para asegurar que su experiencia sea fluida.
+        </p>
+
+        <div class="green-dot">
+          ● Salidas cada 30 minutos
+        </div>
+      </div>
+
+      <div class="time-card dark">
+        <h3>Sábados</h3>
+
+        <div class="time-row">
+          <span>Mañana</span>
+          <strong>08:00 – 12:30</strong>
+        </div>
+
+        <div class="time-row">
+          <span>Tarde</span>
+          <strong>13:30 – 18:00</strong>
+        </div>
+
+        <div class="time-row">
+          <span>Noche</span>
+          <strong>19:00 – 21:30</strong>
+        </div>
+      </div>
+
+      <div class="time-card">
+        <h3>Domingos</h3>
+
+        <div class="time-row">
+          <span>Mañana</span>
+          <strong>09:30 – 13:00</strong>
+        </div>
+
+        <div class="time-row">
+          <span>Tarde</span>
+          <strong>14:00 – 19:00</strong>
+        </div>
+
+        <div class="time-row">
+          <span>Noche</span>
+          <strong>Cerrado</strong>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ACCESIBILIDAD -->
+  <section class="accessibility">
+    <div class="container">
+
+      <h2>Compromiso con la Accesibilidad</h2>
+
+      <p>
+        Nuestro servicio está diseñado bajo los más altos estándares de inclusión,
+        garantizando que el patrimonio del Circuito Sur sea accesible para cada viajero.
+      </p>
+
+      <div class="features">
+
+        <div class="feature">
+          <div class="feature-icon">♿</div>
+
+          <h4>Rampas Hidráulicas</h4>
+
+          <p>
+            Unidades equipadas para el acceso autónomo de sillas de ruedas.
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">👁️</div>
+
+          <h4>Señales en Braille</h4>
+
+          <p>
+            Información táctil en todas nuestras terminales y estaciones.
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🎧</div>
+
+          <h4>Soporte Auditivo</h4>
+
+          <p>
+            Sistemas de aviso visuales y auditivos para próximas paradas.
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🧑‍💼</div>
+
+          <h4>Asistencia Personal</h4>
+
+          <p>
+            Personal capacitado en lenguaje de señas y trato preferencial.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+          <h4>Circuito Sur</h4>
+
+          <ul>
+            <li>
+              El viaje curado que conecta la historia de Buenos Aires
+              con la innovación de La Plata.
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Información</h4>
+
+          <ul>
+            <li><a href="#">Mapa de ruta</a></li>
+            <li><a href="#">Protocolo de seguridad</a></li>
+            <li><a href="#">Preguntas frecuentes</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Legal</h4>
+
+          <ul>
+            <li><a href="#">Términos de servicio</a></li>
+            <li><a href="#">Política de privacidad</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Contacto</h4>
+
+          <ul>
+            <li>info@circuitosur.travel</li>
+            <li>+54 11 4455-6677</li>
+          </ul>
+
+          <button class="btn-primary footer-btn">
+            Contáctanos
+          </button>
+        </div>
+
+      </div>
+
+      <div class="copyright">
+        © 2026 Circuito Sur. El viaje curado.
+        Conectando Buenos Aires y La Plata.
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="transporte-turistico.js"></script>
+</body>
+</html>

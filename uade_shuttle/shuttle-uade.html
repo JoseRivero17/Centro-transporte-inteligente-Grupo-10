@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shuttle UADE – Roca — GeoTransporte</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+        /* Hero del shuttle */
+        .hero-shuttle {
+            background: linear-gradient(135deg, var(--color-base) 0%, #1a3a5c 60%, #0f3460 100%);
+            color: var(--color-blanco);
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-shuttle::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-azul), var(--color-acento));
+        }
+
+        .hero-shuttle h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .hero-shuttle p {
+            font-size: 1rem;
+            color: #a0b4c8;
+            margin-bottom: 35px;
+        }
+
+        /* Badge de servicio */
+        .badge-servicio {
+            display: inline-block;
+            background-color: var(--color-azul);
+            color: var(--color-blanco);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+
+        /* Recorrido visual */
+        .recorrido-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 30px 0 10px;
+            flex-wrap: wrap;
+        }
+
+        .punto-recorrido {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .punto-recorrido .circulo {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            background-color: rgba(255,255,255,0.1);
+            border: 2px solid var(--color-acento);
+        }
+
+        .punto-recorrido span {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--color-blanco);
+        }
+
+        .linea-recorrido {
+            flex: 1;
+            max-width: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .linea-recorrido .flecha-ida,
+        .linea-recorrido .flecha-vuelta {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            gap: 4px;
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .linea-recorrido .flecha-ida {
+            color: var(--color-acento);
+            justify-content: flex-end;
+        }
+
+        .linea-recorrido .flecha-vuelta {
+            color: var(--color-azul);
+            justify-content: flex-start;
+        }
+
+        .linea-recorrido .linea {
+            flex: 1;
+            height: 1.5px;
+        }
+
+        .linea-recorrido .flecha-ida .linea {
+            background: var(--color-acento);
+        }
+
+        .linea-recorrido .flecha-vuelta .linea {
+            background: var(--color-azul);
+        }
+
+        /* Tabs de turnos */
+        .tab.turno-manana.activo  { background-color: var(--color-base); border-color: var(--color-base); color: var(--color-blanco); }
+        .tab.turno-tarde.activo   { background-color: var(--color-azul); border-color: var(--color-azul); color: var(--color-blanco); }
+        .tab.turno-noche.activo   { background-color: var(--color-base); border-color: var(--color-acento); color: var(--color-blanco); }
+
+        /* Tabla shuttle */
+        .tabla-shuttle thead th {
+            background-color: var(--color-azul);
+        }
+
+        .hora-salida {
+            font-weight: 700;
+            color: var(--color-base) !important;
+            font-size: 1rem !important;
+        }
+
+        .tren-conexion {
+            font-size: 0.78rem;
+            color: var(--color-texto-suave);
+        }
+
+        .tren-conexion strong {
+            color: #c8102e;
+        }
+
+        /* Alerta turno noche */
+        .alerta-noche {
+            background-color: #fff8e1;
+            border-left: 4px solid #f39c12;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #7d5a00;
+            margin-top: 16px;
+            display: none;
+        }
+
+        .alerta-noche.visible {
+            display: block;
+        }
+
+        /* Leyenda de tabla */
+        .leyenda-tabla {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 14px;
+            font-size: 0.78rem;
+            color: var(--color-texto-suave);
+        }
+
+        .leyenda-tabla span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .dot-shuttle {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--color-azul);
+            flex-shrink: 0;
+        }
+
+        .dot-tren {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #c8102e;
+            flex-shrink: 0;
+        }
+
+        /* Tipo de parada destino */
+        .tipo-parada.destino {
+            background-color: var(--color-azul);
+            color: var(--color-blanco);
+        }
+
+        /* FAQ */
+        .faq-lista {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .faq-item {
+            background-color: var(--color-blanco);
+            border-radius: 8px;
+            border-left: 4px solid var(--color-azul);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .faq-pregunta {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 14px 18px;
+            text-align: left;
+            font-family: var(--fuente);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-base);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .faq-pregunta:hover {
+            background-color: var(--color-fondo-alt);
+        }
+
+        .faq-icono {
+            font-size: 1rem;
+            color: var(--color-azul);
+            transition: transform 0.2s;
+            flex-shrink: 0;
+        }
+
+        .faq-item.abierto .faq-icono {
+            transform: rotate(45deg);
+        }
+
+        .faq-respuesta {
+            display: none;
+            padding: 0 18px 14px;
+            font-size: 0.87rem;
+            color: var(--color-texto-suave);
+            line-height: 1.6;
+        }
+
+        .faq-item.abierto .faq-respuesta {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <div class="contenedor-header">
+            <div class="logo-sitio">
+                <span class="icono-tren">🚌</span>
+                <div>
+                    <p class="nombre-centro">GeoTransporte</p>
+                    <h1 class="nombre-linea">Shuttle UADE – Roca</h1>
+                </div>
+            </div>
+            <nav aria-label="Navegación principal">
+                <ul>
+                    <li><a href="#info">Información</a></li>
+                    <li><a href="#recorrido">Recorrido</a></li>
+                    <li><a href="#horarios">Horarios</a></li>
+                    <li><a href="#faq">Preguntas frecuentes</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero-shuttle">
+        <div class="contenedor">
+            <span class="badge-servicio">Servicio universitario</span>
+            <h2>Shuttle UADE – Roca</h2>
+            <p>Transporte directo entre la estación Constitución y el campus UADE</p>
+
+            <div class="recorrido-visual">
+                <div class="punto-recorrido">
+                    <div class="circulo">🚉</div>
+                    <span>Constitución</span>
+                </div>
+                <div class="linea-recorrido">
+                    <div class="flecha-ida"><div class="linea"></div>▶</div>
+                    <div class="flecha-vuelta">◀<div class="linea"></div></div>
+                </div>
+                <div class="punto-recorrido">
+                    <div class="circulo">🎓</div>
+                    <span>UADE</span>
+                </div>
+            </div>
+
+            <div class="datos-rapidos" style="margin-top: 30px;">
+                <div class="dato">
+                    <strong>Recorrido</strong>
+                    <span>Constitución ↔ UADE</span>
+                </div>
+                <div class="dato">
+                    <strong>Duración</strong>
+                    <span>~12 minutos</span>
+                </div>
+                <div class="dato">
+                    <strong>Frecuencia</strong>
+                    <span>Días hábiles</span>
+                </div>
+                <div class="dato">
+                    <strong>Público</strong>
+                    <span>Estudiantes y docentes</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFORMACIÓN -->
+    <section id="info" class="seccion">
+        <div class="contenedor">
+            <h2>Información del servicio</h2>
+
+            <div class="info-grid">
+                <div class="info-bloque">
+                    <h3>Descripción</h3>
+                    <p>
+                        El Shuttle UADE – Roca es un servicio de transporte universitario que conecta
+                        la estación Plaza Constitución con el campus de la Universidad Argentina de la Empresa (UADE),
+                        ubicado en el barrio de San Telmo.
+                    </p>
+                    <p>
+                        Los horarios están sincronizados con el Tren Roca (ramal Constitución – La Plata),
+                        facilitando el acceso al campus para estudiantes y docentes que llegan desde el sur del AMBA.
+                    </p>
+                </div>
+
+                <div class="info-bloque">
+                    <h3>Turnos disponibles</h3>
+                    <ul class="lista-ramales">
+                        <li><strong>Turno Mañana</strong> — <em>07:45 a 11:45</em></li>
+                        <li><strong>Turno Tarde</strong> — <em>14:00 a 18:00</em></li>
+                        <li><strong>Turno Noche</strong> — <em>18:30 a 22:30</em></li>
+                    </ul>
+                </div>
+
+                <div class="info-bloque">
+                    <h3>Información práctica</h3>
+                    <ul class="lista-destinos">
+                        <li>Punto de partida: Estación Plaza Constitución</li>
+                        <li>Destino: Campus UADE, Lima 775</li>
+                        <li>Distancia: ~2.0 km</li>
+                        <li>Solo días hábiles (lunes a viernes)</li>
+                        <li>Exclusivo para estudiantes y docentes UADE</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HORARIOS -->
+    <section id="horarios" class="seccion">
+        <div class="contenedor">
+            <h2>Horarios del shuttle</h2>
+            <p class="subtitulo-seccion">Una salida por turno, en ambas direcciones — solo días hábiles</p>
+
+            <div class="tabs-ramales" role="tablist" aria-label="Turnos del shuttle">
+                <button class="tab turno-manana activo" data-turno="manana" role="tab" aria-selected="true">
+                    🌅 Turno Mañana
+                </button>
+                <button class="tab turno-tarde" data-turno="tarde" role="tab" aria-selected="false">
+                    ☀️ Turno Tarde
+                </button>
+                <button class="tab turno-noche" data-turno="noche" role="tab" aria-selected="false">
+                    🌙 Turno Noche
+                </button>
+            </div>
+
+            <!-- TURNO MAÑANA -->
+            <div id="turno-manana" class="tablas-horarios">
+                <div class="tabla-contenedor">
+                    <h3>Constitución → UADE</h3>
+                    <table class="tabla-shuttle">
+                        <caption>Salidas desde Constitución — Turno Mañana</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Sale Constitución</th>
+                                <th scope="col">Llega UADE</th>
+                                <th scope="col">Trenes de conexión</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="hora-salida" scope="row">07:32</td>
+                                <td>07:44</td>
+                                <td class="tren-conexion">Tren <strong>2087</strong> (llega 07:15) · Tren <strong>4083</strong> (llega 06:58)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tabla-contenedor">
+                    <h3>UADE → Constitución</h3>
+                    <table class="tabla-shuttle">
+                        <caption>Salidas desde UADE — Turno Mañana</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Sale UADE</th>
+                                <th scope="col">Llega Constitución</th>
+                                <th scope="col">Tren siguiente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="hora-salida" scope="row">11:45</td>
+                                <td>11:57</td>
+                                <td class="tren-conexion">Tren <strong>2175</strong> — sale Constitución 12:08</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TURNO TARDE -->
+            <div id="turno-tarde" class="tablas-horarios" style="display:none;">
+                <div class="tabla-contenedor">
+                    <h3>Constitución → UADE</h3>
+                    <table class="tabla-shuttle">
+                        <caption>Salidas desde Constitución — Turno Tarde</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Sale Constitución</th>
+                                <th scope="col">Llega UADE</th>
+                                <th scope="col">Trenes de conexión</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="hora-salida" scope="row">13:47</td>
+                                <td>13:59</td>
+                                <td class="tren-conexion">Tren <strong>4195</strong> (llega 13:23) · Tren <strong>4199</strong> (llega 13:38)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tabla-contenedor">
+                    <h3>UADE → Constitución</h3>
+                    <table class="tabla-shuttle">
+                        <caption>Salidas desde UADE — Turno Tarde</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Sale UADE</th>
+                                <th scope="col">Llega Constitución</th>
+                                <th scope="col">Trenes siguientes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="hora-salida" scope="row">18:00</td>
+                                <td>18:12</td>
+                                <td class="tren-conexion">Tren <strong>2287</strong> (sale 18:27) · Tren <strong>4291</strong> (sale 18:34)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TURNO NOCHE -->
+            <div id="turno-noche" class="tablas-horarios" style="display:none;">
+                <div class="tabla-contenedor">
+                    <h3>Constitución → UADE</h3>
+                    <table class="tabla-shuttle">
+                        <caption>Salidas desde Constitución — Turno Noche</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Sale Constitución</th>
+                                <th scope="col">Llega UADE</th>
+                                <th scope="col">Trenes de conexión</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="hora-salida" scope="row">18:17</td>
+                                <td>18:29</td>
+                                <td class="tren-conexion">Tren <strong>4283</strong> (llega 18:10) · Tren <strong>4275</strong> (llega 17:46)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tabla-contenedor">
+                    <h3>UADE → Constitución</h3>
+                    <table class="tabla-shuttle">
+                        <caption>Salidas desde UADE — Turno Noche</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Sale UADE</th>
+                                <th scope="col">Llega Constitución</th>
+                                <th scope="col">Tren siguiente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="hora-salida" scope="row">22:30</td>
+                                <td>22:42</td>
+                                <td class="tren-conexion">⚠️ Sin tren — último salió a las 21:19</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="alerta-noche visible">
+                        ⚠️ <strong>Atención turno noche:</strong> el último tren desde Constitución sale a las 21:19.
+                        Al finalizar el turno, el shuttle llega a Constitución a las 22:42.
+                        Recomendamos planificar el regreso con anticipación (colectivo o transporte privado).
+                    </div>
+                </div>
+            </div>
+
+            <div class="leyenda-tabla">
+                <span><span class="dot-shuttle"></span> Horario del shuttle</span>
+                <span><span class="dot-tren"></span> Tren Roca de conexión</span>
+            </div>
+
+            <p class="nota-horarios">
+                * Horarios del Tren Roca vigentes desde el 16/01/2026. Consultá el cuadro horario completo en
+                <a href="https://www.trenroca.com.ar" target="_blank" rel="noopener noreferrer">trenroca.com.ar</a>.
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="seccion seccion-gris">
+        <div class="contenedor">
+            <h2>Preguntas frecuentes</h2>
+            <p class="subtitulo-seccion">Todo lo que necesitás saber antes de usar el shuttle</p>
+
+            <div class="faq-lista">
+                <div class="faq-item">
+                    
+                    <button class= "faq-pregunta" aria-expanded="false">
+                        ¿ Cómo es la ruta?  
+                        <span class="faq-icono">+</span>
+                    </button>
+                    <div class="faq-respuesta">
+                        El shuttle realiza un recorrido directo entre la estación Plaza Constitución y el campus UADE en San Telmo,
+                        sin paradas intermedias. La distancia es de aproximadamente 2 km, con una duración estimada de 12 minutos.
+                        <br>
+                        <a
+                        href="https://www.google.com/maps/dir/Estaci%C3%B3n+Constituci%C3%B3n/UADE,+Lima+775,+Buenos+Aires"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn-mapa"
+                    >
+                        Ver ruta en Google Maps
+                    </a>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-pregunta" aria-expanded="false">
+                        ¿Necesito reservar un lugar con anticipación?
+                        <span class="faq-icono">+</span>
+                    </button>
+                    <div class="faq-respuesta">
+                        No. El shuttle no requiere reserva previa. Simplemente presentate en el punto de partida
+                        (Estación Constitución) antes del horario de salida con tu credencial de UADE.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-pregunta" aria-expanded="false">
+                        ¿El servicio tiene algún costo?
+                        <span class="faq-icono">+</span>
+                    </button>
+                    <div class="faq-respuesta">
+                        El shuttle es un servicio gratuito para estudiantes y docentes de UADE con credencial vigente.
+                        El costo del tren Roca corre por cuenta del pasajero (tarjeta SUBE).
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-pregunta" aria-expanded="false">
+                        ¿Qué pasa si pierdo el shuttle?
+                        <span class="faq-icono">+</span>
+                    </button>
+                    <div class="faq-respuesta">
+                        El shuttle sale en horario fijo y no espera. Si lo perdés, podés llegar al campus
+                        caminando (~30 min) o tomando la línea 29 de colectivo desde Constitución hasta San Telmo.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-pregunta" aria-expanded="false">
+                        ¿Funciona los fines de semana o feriados?
+                        <span class="faq-icono">+</span>
+                    </button>
+                    <div class="faq-respuesta">
+                        No. El servicio opera únicamente los días hábiles (lunes a viernes),
+                        en los horarios de los tres turnos académicos.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-pregunta" aria-expanded="false">
+                        ¿Cómo vuelvo si tengo turno noche?
+                        <span class="faq-icono">+</span>
+                    </button>
+                    <div class="faq-respuesta">
+                        El shuttle de regreso del turno noche llega a Constitución a las 22:42, cuando el último tren
+                        ya partió (21:19). Recomendamos usar colectivo (líneas 29, 22, 126) o acordar un transporte
+                        privado con anticipación.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="contenedor contenedor-footer">
+            <div class="footer-bloque">
+                <p class="footer-titulo">GeoTransporte</p>
+                <p>Proyecto académico — UADE 2026</p>
+            </div>
+            <div class="footer-bloque">
+                <p class="footer-titulo">Shuttle UADE – Roca</p>
+                <p>Servicio de transporte universitario</p>
+                <p>Constitución ↔ Campus UADE, San Telmo</p>
+            </div>
+            <div class="footer-bloque">
+                <p class="footer-titulo">Información útil</p>
+                <ul>
+                    <li><a href="https://www.uade.edu.ar" target="_blank" rel="noopener noreferrer">uade.edu.ar</a></li>
+                    <li><a href="https://www.trenroca.com.ar" target="_blank" rel="noopener noreferrer">trenroca.com.ar</a></li>
+                    <li><a href="https://www.sube.gob.ar" target="_blank" rel="noopener noreferrer">Tarjeta SUBE</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer-copy">© 2026 — GeoTransporte · Grupo 10 · UADE</p>
+    </footer>
+
+    <script>
+        // Tabs de turnos
+        const tabsBtns = document.querySelectorAll('.tabs-ramales .tab[data-turno]');
+        const turnosPanels = document.querySelectorAll('.tablas-horarios');
+
+        tabsBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const turno = btn.dataset.turno;
+
+                tabsBtns.forEach(b => {
+                    b.classList.remove('activo');
+                    b.setAttribute('aria-selected', 'false');
+                });
+                btn.classList.add('activo');
+                btn.setAttribute('aria-selected', 'true');
+
+                turnosPanels.forEach(panel => panel.style.display = 'none');
+                document.getElementById('turno-' + turno).style.display = 'flex';
+            });
+        });
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-pregunta').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                const abierto = item.classList.contains('abierto');
+
+                // Cerrar todos
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('abierto');
+                    i.querySelector('.faq-pregunta').setAttribute('aria-expanded', 'false');
+                });
+
+                // Abrir el clickeado si estaba cerrado
+                if (!abierto) {
+                    item.classList.add('abierto');
+                    btn.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

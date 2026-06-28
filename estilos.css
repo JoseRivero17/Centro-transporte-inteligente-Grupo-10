@@ -591,6 +591,143 @@ tbody tr:hover {
     color: var(--color-texto-suave);
 }
 
+/* ---- CONSULTA DE VIAJES ---- */
+.consulta-caja {
+    margin-top: 20px;
+    background-color: var(--color-blanco);
+    padding: 26px;
+    border-radius: 10px;
+    border-top: 3px solid var(--color-acento);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+}
+
+.consulta-form {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.campo-consulta {
+    flex: 1;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.campo-consulta label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-base);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.campo-consulta select {
+    padding: 11px 14px;
+    border: 2px solid var(--color-fondo-alt);
+    border-radius: 8px;
+    font-family: var(--fuente);
+    font-size: 0.9rem;
+    color: var(--color-texto);
+    background-color: var(--color-blanco);
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.campo-consulta select:focus {
+    border-color: var(--color-acento);
+}
+
+.btn-consulta {
+    padding: 12px 26px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--color-azul);
+    color: var(--color-blanco);
+    font-family: var(--fuente);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-consulta:hover {
+    background-color: #2070e0;
+}
+
+/* Aviso de validación (rojo Roca) */
+.consulta-aviso {
+    margin-top: 18px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background-color: #fdecec;
+    border-left: 4px solid var(--color-linea);
+    color: #8a1c2b;
+    font-size: 0.88rem;
+}
+
+/* Panel de resultados */
+.consulta-resultado {
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px solid var(--color-fondo-alt);
+}
+
+.resultado-recorrido {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-base);
+    margin-bottom: 16px;
+}
+
+.resultado-grilla {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.resultado-item {
+    flex: 1;
+    min-width: 200px;
+    background-color: var(--color-fondo);
+    border: 1px solid var(--color-fondo-alt);
+    border-left: 4px solid var(--color-acento);
+    border-radius: 8px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.resultado-label {
+    font-size: 0.73rem;
+    font-weight: 600;
+    color: var(--color-texto-suave);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.resultado-valor {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-base);
+}
+
+.resultado-nota {
+    margin-top: 16px;
+    font-size: 0.78rem;
+    color: var(--color-texto-suave);
+}
+
+/* Enlace "volver al Centro" en la navegación */
+.link-volver {
+    color: var(--color-acento) !important;
+    font-weight: 600;
+}
+
 /* ---- FOOTER ---- */
 footer {
     background-color: var(--color-base);
@@ -677,5 +814,16 @@ footer {
 
     nav ul {
         gap: 4px;
+    }
+
+    /* Consulta de viajes en móvil: todo en una columna */
+    .consulta-form,
+    .resultado-grilla {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-consulta {
+        width: 100%;
     }
 }

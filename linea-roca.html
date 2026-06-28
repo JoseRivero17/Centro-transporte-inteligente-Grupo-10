@@ -24,8 +24,11 @@
             </div>
             <nav aria-label="Navegación principal">
                 <ul>
+                    <li><a href="index.html" class="link-volver">← Centro</a></li>
+                    <li><a href="#consulta">Consulta de viajes</a></li>
                     <li><a href="#info">Información</a></li>
                     <li><a href="#paradas">Paradas</a></li>
+                    <li><a href="#mapa">Mapa</a></li>
                     <li><a href="#horarios">Horarios</a></li>
                     <li><a href="#accesibilidad">Accesibilidad</a></li>
                 </ul>
@@ -54,6 +57,67 @@
                 <div class="dato">
                     <strong>Operadora</strong>
                     <span>Trenes Argentinos</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: CONSULTA DE VIAJES -->
+    <section id="consulta" class="seccion seccion-gris">
+        <div class="contenedor">
+            <h2>Consultá tu viaje</h2>
+            <p class="subtitulo-seccion">
+                Elegí estación de origen y destino dentro de la Línea Roca y obtené el servicio
+                recomendado, el andén de salida, el tiempo y el costo estimado del viaje.
+            </p>
+
+            <div class="consulta-caja">
+                <!-- Formulario: los selects se completan desde script.js -->
+                <form id="form-consulta" class="consulta-form" novalidate>
+                    <div class="campo-consulta">
+                        <label for="select-origen">Estación de origen</label>
+                        <select id="select-origen">
+                            <option value="">Seleccioná una estación…</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-consulta">
+                        <label for="select-destino">Estación de destino</label>
+                        <select id="select-destino">
+                            <option value="">Seleccioná una estación…</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-consulta">Consultar viaje</button>
+                </form>
+
+                <!-- Aviso de validación (origen vacío, misma estación, sin conexión, etc.) -->
+                <p id="consulta-aviso" class="consulta-aviso" style="display: none;"></p>
+
+                <!-- Panel de resultados — oculto hasta que haya una consulta válida -->
+                <div id="consulta-resultado" class="consulta-resultado" style="display: none;">
+                    <p class="resultado-recorrido" id="resultado-recorrido"></p>
+                    <div class="resultado-grilla">
+                        <div class="resultado-item">
+                            <span class="resultado-label">🚆 Transporte recomendado</span>
+                            <span class="resultado-valor" id="resultado-transporte"></span>
+                        </div>
+                        <div class="resultado-item">
+                            <span class="resultado-label">📍 Andén / plataforma de salida</span>
+                            <span class="resultado-valor" id="resultado-anden"></span>
+                        </div>
+                        <div class="resultado-item">
+                            <span class="resultado-label">⏱️ Tiempo estimado</span>
+                            <span class="resultado-valor" id="resultado-tiempo"></span>
+                        </div>
+                        <div class="resultado-item">
+                            <span class="resultado-label">💲 Costo estimado</span>
+                            <span class="resultado-valor" id="resultado-costo"></span>
+                        </div>
+                    </div>
+                    <p class="resultado-nota">
+                        * Datos simulados con fines académicos. Tarifas y tiempos orientativos.
+                    </p>
                 </div>
             </div>
         </div>
@@ -404,6 +468,9 @@
             <div class="footer-bloque">
                 <p class="footer-titulo">GeoTransporte</p>
                 <p>Proyecto académico — UADE 2026</p>
+                <p style="margin-top: 0.75rem;">
+                    <a href="index.html">← Volver al Centro de Transporte</a>
+                </p>
             </div>
             <div class="footer-bloque">
                 <p class="footer-titulo">Línea Roca</p>

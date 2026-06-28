@@ -156,6 +156,29 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Bernal", "Quilmes", "Ezpeleta", "Berazategui", "Villa España",
                 "Ranelagh", "Sourigues", "Bosques"
             ]
+        },
+        {
+            id: "gutierrez",
+            nombre: "Bosques (vía Temperley) → Gutiérrez",
+            terminal: "Gutiérrez",
+            anden: "2",
+            estaciones: [
+                "Plaza Constitución", "Hipólito Yrigoyen", "D. Santillán y M. Kosteki", "Gerli",
+                "Lanús", "Remedios de Escalada", "Banfield", "Lomas de Zamora", "Temperley",
+                "José Mármol", "Rafael Calzada", "Claypole", "Ardigó", "Florencio Varela",
+                "Zeballos", "Bosques", "Santa Sofía", "Gutiérrez"
+            ]
+        },
+        {
+            id: "temperley-haedo",
+            nombre: "Temperley – Haedo (transversal)",
+            terminal: "Haedo",
+            anden: "1",
+            estaciones: [
+                "Temperley", "Hospital Español", "Santa Catalina", "Juan XXIII", "Km 34",
+                "P. Turner", "Agustín de Elía", "La Tablada", "San Justo", "Ingeniero Brian",
+                "Haedo"
+            ]
         }
     ];
 

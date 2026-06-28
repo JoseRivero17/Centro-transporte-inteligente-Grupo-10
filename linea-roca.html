@@ -40,7 +40,7 @@
     <section class="hero">
         <div class="contenedor">
             <h2>Servicio de Tren Regional</h2>
-            <p>Conectando el sur del Gran Buenos Aires con la Ciudad de La Plata</p>
+            <p>Toda la red metropolitana del tren Roca: La Plata, Bosques, Alejandro Korn, Ezeiza y el ramal transversal Temperley – Haedo</p>
             <div class="datos-rapidos">
                 <div class="dato">
                     <strong>Recorrido principal</strong>
@@ -208,7 +208,13 @@
                     → Ezeiza
                 </button>
                 <button class="tab" data-ramal="bosques" role="tab" aria-selected="false">
-                    → Bosques
+                    → Bosques (vía Quilmes)
+                </button>
+                <button class="tab" data-ramal="gutierrez" role="tab" aria-selected="false">
+                    → Bosques (vía Temperley)
+                </button>
+                <button class="tab" data-ramal="temperley-haedo" role="tab" aria-selected="false">
+                    → Temperley – Haedo
                 </button>
             </div>
 
@@ -304,6 +310,43 @@
                 <div class="parada"><span class="numero-parada">11</span><div class="info-parada"><strong>Ranelagh</strong><span>Berazategui</span></div><span class="tipo-parada">Parada</span></div>
                 <div class="parada"><span class="numero-parada">12</span><div class="info-parada"><strong>Sourigues</strong><span>Berazategui</span></div><span class="tipo-parada">Parada</span></div>
                 <div class="parada"><span class="numero-parada">13</span><div class="info-parada"><strong>Bosques</strong><span>Terminal — Florencio Varela</span></div><span class="tipo-parada terminal">Terminal</span></div>
+            </div>
+
+            <!-- RAMAL BOSQUES VÍA TEMPERLEY → GUTIÉRREZ (18 estaciones) -->
+            <div id="ramal-gutierrez" class="lista-paradas" style="display:none;">
+                <div class="parada"><span class="numero-parada">01</span><div class="info-parada"><strong>Plaza Constitución</strong><span>Terminal — CABA</span></div><span class="tipo-parada terminal">Terminal</span></div>
+                <div class="parada"><span class="numero-parada">02</span><div class="info-parada"><strong>Hipólito Yrigoyen</strong><span>CABA</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">03</span><div class="info-parada"><strong>D. Santillán y M. Kosteki</strong><span>Avellaneda</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">04</span><div class="info-parada"><strong>Gerli</strong><span>Avellaneda</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">05</span><div class="info-parada"><strong>Lanús</strong><span>Lanús</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">06</span><div class="info-parada"><strong>Remedios de Escalada</strong><span>Lanús</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">07</span><div class="info-parada"><strong>Banfield</strong><span>Lomas de Zamora</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">08</span><div class="info-parada"><strong>Lomas de Zamora</strong><span>Lomas de Zamora</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">09</span><div class="info-parada"><strong>Temperley</strong><span>Lomas de Zamora — nodo de transferencia</span></div><span class="tipo-parada nodo">Nodo</span></div>
+                <div class="parada"><span class="numero-parada">10</span><div class="info-parada"><strong>José Mármol</strong><span>Almirante Brown</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">11</span><div class="info-parada"><strong>Rafael Calzada</strong><span>Almirante Brown</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">12</span><div class="info-parada"><strong>Claypole</strong><span>Almirante Brown</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">13</span><div class="info-parada"><strong>Ardigó</strong><span>Almirante Brown</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">14</span><div class="info-parada"><strong>Florencio Varela</strong><span>Florencio Varela</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">15</span><div class="info-parada"><strong>Zeballos</strong><span>Florencio Varela</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">16</span><div class="info-parada"><strong>Bosques</strong><span>Florencio Varela — combinación a Gutiérrez</span></div><span class="tipo-parada nodo">Nodo</span></div>
+                <div class="parada"><span class="numero-parada">17</span><div class="info-parada"><strong>Santa Sofía</strong><span>Berazategui</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">18</span><div class="info-parada"><strong>Gutiérrez</strong><span>Terminal — Berazategui</span></div><span class="tipo-parada terminal">Terminal</span></div>
+            </div>
+
+            <!-- RAMAL TEMPERLEY – HAEDO (11 estaciones, transversal) -->
+            <div id="ramal-temperley-haedo" class="lista-paradas" style="display:none;">
+                <div class="parada"><span class="numero-parada">01</span><div class="info-parada"><strong>Temperley</strong><span>Terminal — Lomas de Zamora</span></div><span class="tipo-parada terminal">Terminal</span></div>
+                <div class="parada"><span class="numero-parada">02</span><div class="info-parada"><strong>Hospital Español</strong><span>Lomas de Zamora</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">03</span><div class="info-parada"><strong>Santa Catalina</strong><span>Lomas de Zamora</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">04</span><div class="info-parada"><strong>Juan XXIII</strong><span>La Matanza</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">05</span><div class="info-parada"><strong>Km 34</strong><span>La Matanza</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">06</span><div class="info-parada"><strong>P. Turner</strong><span>La Matanza</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">07</span><div class="info-parada"><strong>Agustín de Elía</strong><span>La Matanza — combinación con otros ramales</span></div><span class="tipo-parada nodo">Nodo</span></div>
+                <div class="parada"><span class="numero-parada">08</span><div class="info-parada"><strong>La Tablada</strong><span>La Matanza</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">09</span><div class="info-parada"><strong>San Justo</strong><span>La Matanza</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">10</span><div class="info-parada"><strong>Ingeniero Brian</strong><span>Morón</span></div><span class="tipo-parada">Parada</span></div>
+                <div class="parada"><span class="numero-parada">11</span><div class="info-parada"><strong>Haedo</strong><span>Terminal — Morón</span></div><span class="tipo-parada terminal">Terminal</span></div>
             </div>
 
         </div>

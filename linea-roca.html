@@ -9,6 +9,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilos.css">
     <script src="script.js" defer></script>
+    <style>
+        /* ── Tabs de mapa ── */
+        .tabs-mapa { margin-bottom: 0; }
+        .mapa-ramal { display: none; }
+        .mapa-ramal.activo-mapa { display: block; }
+        .mapa-footer-ext {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+        .btn-mapa-ext {
+            display: inline-block;
+            padding: 9px 18px;
+            background: #c8102e;
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: background 0.25s ease, transform 0.15s ease;
+        }
+        .btn-mapa-ext:hover {
+            background: #9b0c23;
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
 <body>
 
@@ -356,42 +382,159 @@
     <section id="mapa" class="seccion">
         <div class="contenedor">
             <h2>Mapa del recorrido</h2>
-            <p class="subtitulo-seccion">Ramal principal: Constitución (CABA) → La Plata (Provincia de Buenos Aires)</p>
+            <p class="subtitulo-seccion">Seleccioná un ramal para ver su recorrido real de punta a punta</p>
 
-            <div class="mapa-contenedor">
-                <iframe
-                    title="Mapa del recorrido de la Línea Roca entre Constitución y La Plata"
-                    src="https://www.openstreetmap.org/export/embed.html?bbox=-58.45%2C-35.0%2C-57.85%2C-34.55&layer=mapnik"
-                    width="100%"
-                    height="420"
-                    style="border: none; border-radius: 8px;"
-                    allowfullscreen
-                    loading="lazy"
-                ></iframe>
+            <!-- Tabs de selección de ramal para el mapa -->
+            <div class="tabs-ramales tabs-mapa" role="tablist" aria-label="Mapa por ramal de la Línea Roca">
+                <button class="tab activo" data-mapa="mapa-la-plata" role="tab" aria-selected="true">
+                    → La Plata
+                </button>
+                <button class="tab" data-mapa="mapa-alejandro-korn" role="tab" aria-selected="false">
+                    → Alejandro Korn
+                </button>
+                <button class="tab" data-mapa="mapa-ezeiza" role="tab" aria-selected="false">
+                    → Ezeiza
+                </button>
+                <button class="tab" data-mapa="mapa-bosques" role="tab" aria-selected="false">
+                    → Bosques (vía Quilmes)
+                </button>
+                <button class="tab" data-mapa="mapa-gutierrez" role="tab" aria-selected="false">
+                    → Gutiérrez (vía Temperley)
+                </button>
+                <button class="tab" data-mapa="mapa-temperley-haedo" role="tab" aria-selected="false">
+                    → Temperley – Haedo
+                </button>
+            </div>
 
-                <div class="mapa-leyenda">
-                    <div class="leyenda-item">
-                        <span class="punto terminal-inicio"></span>
-                        <span>Constitución — Terminal norte (CABA)</span>
+            <!-- ── Mapa: La Plata ── -->
+            <div id="mapa-la-plata" class="mapa-ramal activo-mapa">
+                <div class="mapa-contenedor">
+                    <iframe
+                        title="Recorrido Constitución – La Plata"
+                        src="https://maps.google.com/maps?f=d&saddr=-34.6283037,-58.3805292&daddr=-34.904139,-57.9498097&hl=es&dirflg=r&output=embed"
+                        width="100%" height="420"
+                        style="border:none;border-radius:8px;"
+                        loading="lazy"
+                    ></iframe>
+                    <div class="mapa-leyenda">
+                        <div class="leyenda-item"><span class="punto terminal-inicio"></span><span>Constitución — Terminal norte (CABA)</span></div>
+                        <div class="leyenda-item"><span class="punto terminal-fin"></span><span>La Plata — Terminal sur (Capital bonaerense)</span></div>
                     </div>
-                    <div class="leyenda-item">
-                        <span class="punto nodo-transfer"></span>
-                        <span>Temperley — Nodo de transferencia entre ramales</span>
+                    <div class="mapa-footer-ext">
+                        <a href="https://www.google.com/maps/dir/Plaza+Constituci%C3%B3n,+Brasil+1128,+C1138+Cdad.+Aut%C3%B3noma+de+Buenos+Aires/La+Plata,+B1902+La+Plata,+Provincia+de+Buenos+Aires/@-34.7563942,-58.3302848,11z/data=!4m15!4m14!1m5!1m1!1s0x95bccb304eaf933b:0xd4f34f9422a8ef9f!2m2!1d-58.3805292!2d-34.6283037!1m5!1m1!1s0x95a2e64607f27503:0xf0b88cd21392b5c7!2m2!1d-57.9498097!2d-34.904139!3e3!5i2?entry=ttu"
+                           target="_blank" rel="noopener noreferrer" class="btn-mapa-ext">Ver en Google Maps →</a>
                     </div>
-                    <div class="leyenda-item">
-                        <span class="punto terminal-fin"></span>
-                        <span>La Plata — Terminal sur (Capital bonaerense)</span>
-                    </div>
-                    <a
-                        href="https://www.google.com/maps/dir/Estaci%C3%B3n+Constituci%C3%B3n/Estaci%C3%B3n+La+Plata"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="btn-mapa"
-                    >
-                        Ver ruta completa en Google Maps
-                    </a>
                 </div>
             </div>
+
+            <!-- ── Mapa: Alejandro Korn ── -->
+            <div id="mapa-alejandro-korn" class="mapa-ramal">
+                <div class="mapa-contenedor">
+                    <iframe
+                        title="Recorrido Constitución – Alejandro Korn"
+                        src="https://maps.google.com/maps?f=d&saddr=-34.6261244,-58.3859524&daddr=-34.984519,-58.3760181&hl=es&dirflg=r&output=embed"
+                        width="100%" height="420"
+                        style="border:none;border-radius:8px;"
+                        loading="lazy"
+                    ></iframe>
+                    <div class="mapa-leyenda">
+                        <div class="leyenda-item"><span class="punto terminal-inicio"></span><span>Constitución — Terminal norte (CABA)</span></div>
+                        <div class="leyenda-item"><span class="punto nodo-transfer"></span><span>Temperley — Nodo de transferencia</span></div>
+                        <div class="leyenda-item"><span class="punto terminal-fin"></span><span>Alejandro Korn — Terminal (San Vicente)</span></div>
+                    </div>
+                    <div class="mapa-footer-ext">
+                        <a href="https://www.google.com/maps/dir/Constituci%C3%B3n,+Cdad.+Aut%C3%B3noma+de+Buenos+Aires/Alejandro+Korn,+Provincia+de+Buenos+Aires/@-34.8048474,-58.5546152,11z/am=t/data=!4m14!4m13!1m5!1m1!1s0x95bccb2520946ad7:0x531f8f8d460384ad!2m2!1d-58.3859524!2d-34.6261244!1m5!1m1!1s0x95bd2cafe5b125e1:0x6f0057ac8cd3c419!2m2!1d-58.3760181!2d-34.984519!3e3?entry=ttu"
+                           target="_blank" rel="noopener noreferrer" class="btn-mapa-ext">Ver en Google Maps →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Mapa: Ezeiza ── -->
+            <div id="mapa-ezeiza" class="mapa-ramal">
+                <div class="mapa-contenedor">
+                    <iframe
+                        title="Recorrido Constitución – Ezeiza"
+                        src="https://maps.google.com/maps?f=d&saddr=-34.6261244,-58.3859524&daddr=-34.8520,-58.5133&hl=es&dirflg=r&output=embed"
+                        width="100%" height="420"
+                        style="border:none;border-radius:8px;"
+                        loading="lazy"
+                    ></iframe>
+                    <div class="mapa-leyenda">
+                        <div class="leyenda-item"><span class="punto terminal-inicio"></span><span>Constitución — Terminal norte (CABA)</span></div>
+                        <div class="leyenda-item"><span class="punto nodo-transfer"></span><span>Temperley — Nodo de transferencia</span></div>
+                        <div class="leyenda-item"><span class="punto terminal-fin"></span><span>Ezeiza — Terminal (Esteban Echeverría)</span></div>
+                    </div>
+                    <div class="mapa-footer-ext">
+                        <a href="https://www.google.com/maps/dir/Constituci%C3%B3n,+Cdad.+Aut%C3%B3noma+de+Buenos+Aires/Ezeiza,+Provincia+de+Buenos+Aires/@-34.737,-58.452,11z/data=!3e3"
+                           target="_blank" rel="noopener noreferrer" class="btn-mapa-ext">Ver en Google Maps →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Mapa: Bosques vía Quilmes ── -->
+            <div id="mapa-bosques" class="mapa-ramal">
+                <div class="mapa-contenedor">
+                    <iframe
+                        title="Recorrido Constitución – Bosques vía Quilmes"
+                        src="https://maps.google.com/maps?f=d&saddr=-34.6283037,-58.3805292&daddr=-34.8266046,-58.2261392&hl=es&dirflg=r&output=embed"
+                        width="100%" height="420"
+                        style="border:none;border-radius:8px;"
+                        loading="lazy"
+                    ></iframe>
+                    <div class="mapa-leyenda">
+                        <div class="leyenda-item"><span class="punto terminal-inicio"></span><span>Constitución — Terminal norte (CABA)</span></div>
+                        <div class="leyenda-item"><span class="punto terminal-fin"></span><span>Bosques — Terminal (Florencio Varela)</span></div>
+                    </div>
+                    <div class="mapa-footer-ext">
+                        <a href="https://www.google.com/maps/dir/Plaza+Constituci%C3%B3n,+Brasil+1128,+C1138+Cdad.+Aut%C3%B3noma+de+Buenos+Aires/Bosques,+Provincia+de+Buenos+Aires/@-34.7441077,-58.3996156,12.55z/data=!4m14!4m13!1m5!1m1!1s0x95bccb304eaf933b:0xd4f34f9422a8ef9f!2m2!1d-58.3805292!2d-34.6283037!1m5!1m1!1s0x95a3284818be904d:0xddf069ecf1e3ab5e!2m2!1d-58.2261392!2d-34.8266046!3e3?entry=ttu"
+                           target="_blank" rel="noopener noreferrer" class="btn-mapa-ext">Ver en Google Maps →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Mapa: Gutiérrez vía Temperley ── -->
+            <div id="mapa-gutierrez" class="mapa-ramal">
+                <div class="mapa-contenedor">
+                    <iframe
+                        title="Recorrido Constitución – Gutiérrez vía Temperley"
+                        src="https://maps.google.com/maps?f=d&saddr=-34.6283037,-58.3805292&daddr=-34.8338381,-58.1855535&hl=es&dirflg=r&output=embed"
+                        width="100%" height="420"
+                        style="border:none;border-radius:8px;"
+                        loading="lazy"
+                    ></iframe>
+                    <div class="mapa-leyenda">
+                        <div class="leyenda-item"><span class="punto terminal-inicio"></span><span>Constitución — Terminal norte (CABA)</span></div>
+                        <div class="leyenda-item"><span class="punto nodo-transfer"></span><span>Bosques — Combinación a Gutiérrez (diésel)</span></div>
+                        <div class="leyenda-item"><span class="punto terminal-fin"></span><span>Gutiérrez — Terminal (Berazategui)</span></div>
+                    </div>
+                    <div class="mapa-footer-ext">
+                        <a href="https://www.google.com/maps/dir/Plaza+Constituci%C3%B3n,+Brasil+1128,+C1138+Cdad.+Aut%C3%B3noma+de+Buenos+Aires/J.M.Guti%C3%A9rrez,+C.+455+1200,+B1890CWL+Juan+Mar%C3%ADa+Guti%C3%A9rrez,+Provincia+de+Buenos+Aires/@-34.734598,-58.3590362,12z/am=t/data=!4m16!4m15!1m5!1m1!1s0x95bccb304eaf933b:0xd4f34f9422a8ef9f!2m2!1d-58.3805292!2d-34.6283037!1m5!1m1!1s0x95a327f905b428db:0x5d3bc8da6f1d187e!2m2!1d-58.1855535!2d-34.8338381!2m1!5e2!3e3?entry=ttu"
+                           target="_blank" rel="noopener noreferrer" class="btn-mapa-ext">Ver en Google Maps →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Mapa: Temperley – Haedo ── -->
+            <div id="mapa-temperley-haedo" class="mapa-ramal">
+                <div class="mapa-contenedor">
+                    <iframe
+                        title="Recorrido Temperley – Haedo (transversal)"
+                        src="https://maps.google.com/maps?f=d&saddr=-34.7757414,-58.3967273&daddr=-34.6447605,-58.5917711&hl=es&dirflg=r&output=embed"
+                        width="100%" height="420"
+                        style="border:none;border-radius:8px;"
+                        loading="lazy"
+                    ></iframe>
+                    <div class="mapa-leyenda">
+                        <div class="leyenda-item"><span class="punto terminal-inicio"></span><span>Temperley — Terminal este (Lomas de Zamora)</span></div>
+                        <div class="leyenda-item"><span class="punto terminal-fin"></span><span>Haedo — Terminal oeste (Morón)</span></div>
+                    </div>
+                    <div class="mapa-footer-ext">
+                        <a href="https://www.google.com/maps/dir/Temperley,+14+de+Julio+43-87,+B1834+Temperley,+Provincia+de+Buenos+Aires/Haedo,+B1706+Haedo,+Provincia+de+Buenos+Aires/@-34.691529,-58.5662951,12z/data=!3m1!4b1!4m16!4m15!1m5!1m1!1s0x95bcd2e723adc31f:0x7dcedd64812c55df!2m2!1d-58.3967273!2d-34.7757414!1m5!1m1!1s0x95bcc78445131cc1:0x4e7194a403f10e3b!2m2!1d-58.5917711!2d-34.6447605!2m1!5e2!3e3?entry=ttu"
+                           target="_blank" rel="noopener noreferrer" class="btn-mapa-ext">Ver en Google Maps →</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -508,6 +651,28 @@
             </div>
         </div>
     </section>
+
+    <script>
+        // ── Tabs del mapa (independientes de los tabs de paradas) ──
+        (function () {
+            const tabsMapa = document.querySelectorAll('.tabs-mapa .tab');
+            const panelesMapa = document.querySelectorAll('.mapa-ramal');
+            tabsMapa.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    const target = btn.dataset.mapa;
+                    tabsMapa.forEach(function (t) {
+                        t.classList.remove('activo');
+                        t.setAttribute('aria-selected', 'false');
+                    });
+                    panelesMapa.forEach(function (p) { p.classList.remove('activo-mapa'); });
+                    btn.classList.add('activo');
+                    btn.setAttribute('aria-selected', 'true');
+                    var panel = document.getElementById(target);
+                    if (panel) panel.classList.add('activo-mapa');
+                });
+            });
+        })();
+    </script>
 
     <!-- PIE DE PÁGINA -->
     <footer>

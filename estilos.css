@@ -406,6 +406,30 @@ nav ul li a:hover {
     font-weight: 600;
 }
 
+/* Estación de salida y de llegada (resaltadas por la consulta de viajes) */
+.parada.salida {
+    border-left: 5px solid var(--color-linea);
+    background-color: #fff6f2;
+}
+
+.parada.llegada {
+    border-left: 5px solid var(--color-azul);
+    background-color: #f1f7ff;
+}
+
+/* Etiqueta "Salida" / "Llegada" antes del nombre de la estación */
+.parada.salida .info-parada strong::before {
+    content: "Salida · ";
+    color: var(--color-linea);
+    font-weight: 700;
+}
+
+.parada.llegada .info-parada strong::before {
+    content: "Llegada · ";
+    color: var(--color-azul);
+    font-weight: 700;
+}
+
 /* ---- MAPA ---- */
 .mapa-contenedor {
     margin-top: 20px;

@@ -73,6 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const paradas = obtenerParadas();
         paradas.forEach(function (p) { p.style.display = "flex"; });
+        // Quitar marcas de salida/llegada de una consulta anterior
+        paradas.forEach(function (p) { p.classList.remove("salida", "llegada"); });
         actualizarContador(paradas.length, paradas.length);
     }
 
@@ -96,17 +98,22 @@ document.addEventListener("DOMContentLoaded", function () {
 // =============================================
 //  CONSULTA DE VIAJES — Línea Roca
 //  Datos simulados (fines académicos · TPO)
-//  El usuario elige origen y destino y obtiene:
-//  transporte recomendado, andén, tiempo y costo.
+//  El usuario elige origen y destino y la página:
+//   - informa transporte recomendado, andén, tiempo y costo
+//   - filtra la lista de "Paradas y estaciones" para mostrar
+//     SOLO el tramo entre la estación de salida y la de llegada.
 // =============================================
 
 document.addEventListener("DOMContentLoaded", function () {
 
     // ---- DATOS SIMULADOS: ramales de la Línea Roca ----
-    // Cada ramal tiene su andén de salida en Constitución (simulado),
-    // la terminal de destino y la lista ORDENADA de estaciones.
+    // "id" coincide con el data-ramal de los tabs y con el id del
+    // contenedor de paradas (por ejemplo: ramal-la-plata).
+    // El orden de "estaciones" es el MISMO que el de las paradas
+    // en el HTML, así el índice sirve para ubicar el tramo.
     const ramales = [
         {
+            id: "la-plata",
             nombre: "La Plata",
             terminal: "La Plata",
             anden: "1",
@@ -118,6 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ]
         },
         {
+            id: "alejandro-korn",
             nombre: "Alejandro Korn",
             terminal: "Alejandro Korn",
             anden: "5",
@@ -128,6 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ]
         },
         {
+            id: "ezeiza",
             nombre: "Ezeiza",
             terminal: "Ezeiza",
             anden: "6",
@@ -138,6 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ]
         },
         {
+            id: "bosques",
             nombre: "Bosques (vía Quilmes)",
             terminal: "Bosques",
             anden: "3",
@@ -150,19 +160,19 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     // ---- VARIABLES: elementos del DOM ----
-    const form           = document.getElementById("form-consulta");
+    const form = document.getElementById("form-consulta");
     // Si esta página no tiene el formulario, no seguimos (evita errores).
     if (!form) return;
 
-    const selectOrigen   = document.getElementById("select-origen");
-    const selectDestino  = document.getElementById("select-destino");
-    const aviso          = document.getElementById("consulta-aviso");
-    const resultado      = document.getElementById("consulta-resultado");
-    const elRecorrido    = document.getElementById("resultado-recorrido");
-    const elTransporte   = document.getElementById("resultado-transporte");
-    const elAnden        = document.getElementById("resultado-anden");
-    const elTiempo       = document.getElementById("resultado-tiempo");
-    const elCosto        = document.getElementById("resultado-costo");
+    const selectOrigen  = document.getElementById("select-origen");
+    const selectDestino = document.getElementById("select-destino");
+    const aviso         = document.getElementById("consulta-aviso");
+    const resultado     = document.getElementById("consulta-resultado");
+    const elRecorrido   = document.getElementById("resultado-recorrido");
+    const elTransporte  = document.getElementById("resultado-transporte");
+    const elAnden       = document.getElementById("resultado-anden");
+    const elTiempo      = document.getElementById("resultado-tiempo");
+    const elCosto       = document.getElementById("resultado-costo");
 
     // ---- FUNCIÓN: armar la lista de estaciones únicas (sin repetir) ----
     function obtenerEstacionesUnicas() {
@@ -185,15 +195,14 @@ document.addEventListener("DOMContentLoaded", function () {
     function cargarEstaciones() {
         const estaciones = obtenerEstacionesUnicas();
         estaciones.forEach(function (estacion) {
-            // Creamos una opción para origen y otra para destino
             selectOrigen.appendChild(new Option(estacion, estacion));
             selectDestino.appendChild(new Option(estacion, estacion));
         });
     }
 
     // ---- FUNCIÓN: buscar el mejor ramal que conecte origen y destino ----
-    // Devuelve el ramal con menos estaciones intermedias, o null si no hay
-    // ningún ramal directo que pase por las dos estaciones.
+    // Devuelve el ramal con menos estaciones intermedias y los índices
+    // de origen y destino dentro de ese ramal, o null si no hay servicio directo.
     function buscarViaje(origen, destino) {
         let mejor = null;
 
@@ -204,11 +213,17 @@ document.addEventListener("DOMContentLoaded", function () {
             // Las dos estaciones tienen que estar en el mismo ramal
             if (i !== -1 && j !== -1) {
                 const tramos  = Math.abs(j - i);
-                // El sentido depende de si vamos "hacia abajo" o "hacia arriba"
+                // El sentido depende de si vamos "hacia la terminal" o "hacia Constitución"
                 const sentido = j > i ? ramal.terminal : ramal.estaciones[0];
 
                 if (mejor === null || tramos < mejor.tramos) {
-                    mejor = { ramal: ramal, tramos: tramos, sentido: sentido };
+                    mejor = {
+                        ramal:    ramal,
+                        tramos:   tramos,
+                        sentido:  sentido,
+                        iOrigen:  i,
+                        iDestino: j
+                    };
                 }
             }
         });
@@ -242,11 +257,48 @@ document.addEventListener("DOMContentLoaded", function () {
         resultado.style.display = "none";
     }
 
+    // ---- FUNCIÓN: filtrar la sección de Paradas para mostrar solo el tramo ----
+    // 1) activa el tab del ramal correcto (reutiliza la lógica de arriba),
+    // 2) deja visibles solo las estaciones entre salida y llegada,
+    // 3) marca la estación de salida y la de llegada,
+    // 4) actualiza el contador con la info del tramo.
+    function filtrarTramoEnParadas(viaje, origen, destino) {
+        // 1) Activar el ramal: simulamos el click en su tab
+        const tabRamal = document.querySelector('.tab[data-ramal="' + viaje.ramal.id + '"]');
+        if (tabRamal) tabRamal.click();
+
+        // 2) Mostrar solo las paradas del tramo
+        const contenedor = document.getElementById("ramal-" + viaje.ramal.id);
+        const paradas    = contenedor.querySelectorAll(".parada");
+
+        const desde = Math.min(viaje.iOrigen, viaje.iDestino);
+        const hasta = Math.max(viaje.iOrigen, viaje.iDestino);
+        let visibles = 0;
+
+        paradas.forEach(function (parada, indice) {
+            const enTramo = indice >= desde && indice <= hasta;
+            parada.style.display = enTramo ? "flex" : "none";
+            parada.classList.remove("salida", "llegada");
+            if (enTramo) visibles++;
+        });
+
+        // 3) Marcar salida (origen) y llegada (destino)
+        paradas[viaje.iOrigen].classList.add("salida");
+        paradas[viaje.iDestino].classList.add("llegada");
+
+        // 4) Actualizar el contador del tramo
+        const contador = document.getElementById("contador-paradas");
+        if (contador) {
+            contador.textContent = "Tramo " + origen + " → " + destino + ": " + visibles + " estaciones";
+        }
+    }
+
     // ---- FUNCIÓN: mostrar el resultado del viaje ----
     function mostrarResultado(origen, destino, viaje) {
         const costo = calcularCosto(viaje.tramos);
 
-        elRecorrido.textContent = origen + " → " + destino + " · " + viaje.tramos + " estaciones";
+        elRecorrido.textContent =
+            "Salida: " + origen + "  ·  Llegada: " + destino + "  ·  " + viaje.tramos + " estaciones";
         elTransporte.textContent = "Línea Roca — Ramal " + viaje.ramal.nombre;
         elAnden.textContent      = "Andén " + viaje.ramal.anden + " — sentido " + viaje.sentido;
         elTiempo.textContent     = calcularTiempo(viaje.tramos);
@@ -287,8 +339,12 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Si llegamos hasta acá, mostramos el resultado
+        // Todo OK: mostramos el resultado y filtramos las paradas del tramo
         mostrarResultado(origen, destino, viaje);
+        filtrarTramoEnParadas(viaje, origen, destino);
+
+        // Llevamos al usuario hasta la lista de paradas filtrada
+        document.getElementById("paradas").scrollIntoView({ behavior: "smooth" });
     });
 
     // ---- INICIALIZAR: cargar las estaciones al abrir la página ----

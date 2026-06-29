@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | TransitWeb Solutions</title>
+    <link rel="stylesheet" href="diseño.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="brand">
+            <a href="index.html" class="logo">TransitWeb <span>Solutions</span></a>
+            <p>Diseño web y estrategia digital</p>
+        </div>
+        <nav aria-label="Navegación principal">
+            <ul>
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="integrantes.html">Equipo</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="../../Centro-transporte-inteligente-Grupo-10-main/index.html" class="project-link">Proyecto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <p class="eyebrow">Contacto</p>
+            <h1>Hablemos de tu próximo sitio web</h1>
+            <p>Completá el formulario o escribinos por los canales de contacto. Te responderemos con una orientación inicial para avanzar.</p>
+        </section>
+
+        <section class="contact-layout">
+            <form class="contact-form" action="#" method="post">
+                <label for="nombre">Nombre y apellido</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ej: Ana Pérez" required>
+
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" placeholder="Ej: ana@email.com" required>
+
+                <label for="servicio">Servicio de interés</label>
+                <select id="servicio" name="servicio" required>
+                    <option value="">Seleccionar una opción</option>
+                    <option>Diseño web responsive</option>
+                    <option>Página institucional</option>
+                    <option>Optimización UX/UI</option>
+                    <option>Mantenimiento web</option>
+                    <option>Consultoría digital</option>
+                </select>
+
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" rows="6" placeholder="Contanos brevemente qué necesitás"></textarea>
+
+                <button type="submit" class="button primary">Enviar consulta</button>
+            </form>
+
+            <aside class="contact-card">
+                <h2>Datos de contacto</h2>
+                <div class="info-row">
+                    <span>Email</span>
+                    <a href="mailto:contacto@transitweb.com">contacto@transitweb.com</a>
+                </div>
+                <div class="info-row">
+                    <span>Teléfono</span>
+                    <a href="tel:+541112345678">+54 11 1234-5678</a>
+                </div>
+                <div class="info-row">
+                    <span>Ubicación</span>
+                    <p>Buenos Aires, Argentina</p>
+                </div>
+                <div class="info-row">
+                    <span>Atención</span>
+                    <p>Lunes a viernes de 9:00 a 18:00</p>
+                </div>
+                <p class="note">Este formulario es visual para la entrega. Para hacerlo funcional se puede conectar luego con un servicio de envío o backend.</p>
+            </aside>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TransitWeb Solutions. Diseño web responsive y soluciones digitales.</p>
+    </footer>
+    <script src="transitweb.js"></script>
+</body>
+</html>
